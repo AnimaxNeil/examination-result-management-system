@@ -1,0 +1,32 @@
+//- user home page
+
+extends base.pug
+
+block page-head 
+    title Home
+
+block page-header 
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#user-home
+        if userType=="admin"
+            h1 Admin Home
+            div
+                a(href="/users") View Users
+                a(href="/add-user") Add New User
+        else if userType=="student"
+            h1 Student Home
+            div 
+                a(href="/exams") Ongoing Exams
+                a(href="/results") Results
+                a(href="/profile") Profile
+        else if userType=="teacher"
+            h1 Teacher Home
+            div 
+                a(href="/question-papers") Question Papers
+                a(href="/students") Students
+                a(href="/profile") Profile
+        else 
+            span Unknown user
+

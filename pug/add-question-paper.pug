@@ -1,0 +1,28 @@
+//- add new question paper form
+
+extends base.pug
+
+block page-head 
+    title Add Question Paper 
+
+block page-header 
+    a#back(href="/question-papers") Go Back
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#add-question-paper
+        h1 Add Question Paper 
+        form(action="/add-question-paper" method="POST" enctype="multipart/form-data")
+            div 
+                label(for="Qname") Name : 
+                input#qname(type="text" name="Qname" pattern=rgx.Qname required="required")
+            div
+                label(for="Qname") Full Marks : 
+                input(required="required" type="number" name="marks" min="0" max="9999") 
+            div
+                label(for="Qfile") Upload File :
+                input#qfile(type="file" name="Qfile" accept=".pdf" required="required")
+            div
+                input(type="submit" value="Add this Paper")
+    

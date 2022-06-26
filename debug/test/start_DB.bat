@@ -1,0 +1,1 @@
+mysqld --init-file=C:\\Databases\\command-files\\mysql-init.txt

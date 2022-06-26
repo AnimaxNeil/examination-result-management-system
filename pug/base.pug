@@ -1,0 +1,36 @@
+//- base page layouut
+
+doctype html
+html(lang="en")
+
+    head 
+        meta(charset="utf8")
+        meta(name="viewport" content="=device-width, initial-scale=1.0")
+        meta(name="developer" content="AnimaxNeil")
+        link(rel="stylesheet" href="/static/style.css")
+        link(rel="icon" type="image/png" href="/static/favicon.png")
+        block page-head
+
+    body
+        - const get_valid_userid = (userid) => { return "II" + (userid + 10000000); }
+        
+        if response 
+            div#response
+                span #{response}
+                img(src="/static/small-cross.png" alt="close message" width="20")
+
+        div#page-area
+            header 
+                div#site-name: span Institute of Institution
+                div#site-options
+                    block page-header 
+
+            main
+                block page-main 
+
+        if response 
+            script(src="/static/response-script.js")
+
+        block page-end
+            
+

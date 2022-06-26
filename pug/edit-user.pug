@@ -1,0 +1,109 @@
+//- edit user multiple single forms
+
+extends base.pug
+
+block page-head 
+    title User Details
+
+block page-header
+    a#back(href="/users") Go Back
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+mixin make_singleForm(id)
+    form(id=id action="/edit-user", method="POST") 
+        input(type="hidden" name="userid" value=user.userid)
+
+        if id=="form-password"
+            label(for="password") Password : 
+            input#password(disabled="disabled" required="required" type="text" name="password" value=user.password pattern=rgx.password)
+
+        else if id=="form-type"
+            label(for="type") Type : 
+            select#type(disabled="disabled" required="required" name="type" value=user.type)
+                if user.type=="student"
+                    option(selected="selected" default="true" value="student") Student
+                    option(value="teacher") Teacher 
+                else
+                    option(selected="selected" default="true" value="teacher") Teacher 
+                    option(value="student") Student
+
+        else if id=="form-active"
+            input(type="hidden" name="active_" value="fallback")
+            label(for="active") Active :
+            if user.active==0
+                input#active(disabled="disabled" type="checkbox" name="active" value="true")
+            else 
+                input#active(disabled="disabled" type="checkbox" name="active" checked="checked" value="true")
+
+        else if id=="form-name"
+            label(for="name") Name : 
+            input#name(disabled="disabled" required="required" type="text" name="name" value=userInfo.name pattern=rgx.name)
+
+        else if id=="form-course"
+            label(for="course") Course : 
+            input#course(disabled="disabled" required="required" type="text" name="course" value=userInfo.course pattern=rgx.course)
+
+        else if id=="form-dob"
+            label(for="dob") Date of Birth : 
+            input#dob(disabled="disabled" required="required" type="date" name="dob" value=userInfo.dob)
+
+        else if id=="form-email"
+            label(for="email") Email : 
+            input#email(disabled="disabled" required="required" type="email" name="email" value=userInfo.email pattern=rgx.email)
+
+        else if id=="form-phone"
+            label(for="phone") Phone : 
+            input#phone(disabled="disabled" required="required" type="text" name="phone" value=userInfo.phone pattern=rgx.phone)
+
+        else if id=="form-address"
+            input(type="hidden" name="address_" value="fallback")
+            label(for="address") Address : 
+            textarea#address(disabled="disabled" name="address" maxlength="100" rows="8" cols="30") #{userInfo.address}
+
+        input.edit-btn(type="button" value="Edit")
+        input.cancel-btn(hidden="hidden" type="button" value="Cancel")
+        input.submit-btn(hidden="hidden" type="submit" value="Save")
+
+block page-main 
+    if user && userInfo && rgx 
+        - user.userid = get_valid_userid(user.userid)
+        section#edit-user
+            h1 User Id : &nbsp #{user.userid}
+            +make_singleForm("form-password")
+            +make_singleForm("form-type")
+            +make_singleForm("form-active")
+            +make_singleForm("form-name")
+            +make_singleForm("form-course")
+            +make_singleForm("form-dob")
+            +make_singleForm("form-email")
+            +make_singleForm("form-phone")
+            +make_singleForm("form-address")
+        hr
+        section#delete-user
+            form#form-delete(action="/delete-user" method="POST") 
+                h1 Delete this User ?
+                input(type="hidden" name="userid" value=user.userid)
+                input(type="submit" value="Delete")
+    else 
+        span User not found 
+
+block page-end 
+    if user && userInfo
+        script(type="text/javascript").
+            window.userValues = {
+                userid: #{user.userid},
+                password: `#{user.password}`,
+                type: `#{user.type}`,
+                active: #{user.active},
+                name: `#{userInfo.name}`,
+                course: `#{userInfo.course}`,
+                dob: `#{userInfo.course}`,
+                email: `#{userInfo.email}`,
+                phone: `#{userInfo.phone}`,
+                address: `#{userInfo.address}`
+            };
+    if user && userInfo
+        script(src="/static/edit-user.js") 
+
+        

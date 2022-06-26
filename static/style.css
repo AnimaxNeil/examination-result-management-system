@@ -1,0 +1,364 @@
+/* style sheet for common elements of all pages */
+
+/* #region - Top level */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eeffff;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+#page-area {
+    background-color: #eeffee;
+    max-width: 1080px;
+    margin: 10px auto;
+    border-width: 2px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #006600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ccffcc;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 5px 0;
+}
+
+header #site-name {
+    align-self: center;
+    padding: 10px;
+    margin: 5px 10px;
+    font-weight: bold;
+    color: #006600;
+}
+
+header #site-options {
+    margin-right: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 16px;
+}
+
+header #site-options a {
+    margin: 5px 10px;
+}
+
+main {
+    margin: 60px 5% 80px 5%;
+}
+
+#response {
+    background-color: #ffcccc;
+    padding: 10px;
+    max-width: 1060px;
+    margin: 10px auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #660000;
+    font-size: 16px;
+    clear: both;
+    color: #660000;
+}
+
+#response img {
+    vertical-align: middle;
+    width: 15px;
+    float: right;
+}
+
+/* #endregion */
+
+/* #region - Common elements */
+
+#user-login h1, #user-home h1, #list-users h1, #profile h1, #results h1, #list-students h1,
+#list-active-question-papers h1, #list-inactive-question-papers h1,
+#edit-question-paper h1, #list-unchecked-answer-papers h1, #list-checked-answer-papers h1, #edit-answer-paper h1,
+#list-exam-papers h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+#edit-user h1, #list-users h1, #add-question-paper h1 {
+    font-size: 1.5em;
+}
+
+#delete-user h1, #add-question-paper-option h1 {
+    display: inline;
+    font-size: 1.5em;
+}
+
+#delete-user, #add-question-paper-option, #list-inactive-question-papers h1, #list-unchecked-answer-papers h1, #list-checked-answer-papers h1 {
+    margin-top: 40px;
+}
+
+hr {
+    color: #006600;
+}
+
+input[type=submit], input[type=button], #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a,
+#user-home div a, #back, #home, #logout, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
+#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    box-shadow: black 1px 1px 2px;
+    text-shadow: black 1px 1px 2px;
+}
+
+input[type=button][value="Edit"], input[type=button][value="Cancel"] {
+    color: #000000;
+    border-color: #555555;
+    background-color: #eeeeee;
+    text-shadow: none;
+}
+
+input[type=submit][value="Save"], input[type=submit][value="Add User"], input[type=submit][value="Activate"],
+input[type=submit][value="Add this Paper"], input[type=submit][value="Send Marks"], input[type=submit][value="Submit"] {
+    color: #ffffff;
+    border-color: #004400;
+    background-color: #008800;
+}
+
+input[type=submit][value="Delete"], input[type=submit][value="De-Activate"], #logout {
+    color: #ffffff;
+    border-color: #550000;
+    background-color: #ff5555;
+}
+
+input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a,
+#user-home div a, #back, #home, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
+#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+    color: #ffffff;
+    border-color: #333388;
+    background-color: #5555ff;
+}
+
+/* #endregion */
+
+/* #region - Login */
+
+#user-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 10px);
+    max-width: 400px;
+}
+
+#user-login form label {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#user-login form input {
+    height: 2em;
+    padding: 0 0.5em;
+    width: calc(100% - 1em);
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+#user-login form input[type=submit] {
+    max-width: 10em;
+    margin-right: 10%;
+    font-size: 1.1em;
+}
+
+#user-login form a {
+    margin-left: auto;
+    color: #006600;
+}
+
+/* #endregion */
+
+/* #region - Home */
+
+#user-home div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#user-home div a {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin: 20px 0px;
+    text-decoration: none;
+    border-style: double;
+    border-width: 4px;
+    border-radius: 12px;
+    box-shadow: blue 2px 2px 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* #endregion */
+
+/* #region - Users, Profile, Results, Question Papers, Answer, Exams Papers tables */
+
+#list-users table, #profile table, #results table, #list-students table,
+#list-active-question-papers table, #list-inactive-question-papers table, #edit-question-paper table,
+#list-unchecked-answer-papers table, #list-checked-answer-papers table, #edit-answer-paper table, #list-exam-papers table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
+
+#list-users table td, #list-users table th,
+#profile table td, #profile table th,
+#results table td, #results table th,
+#list-students table td, #list-students table th,
+#list-active-question-papers table td, #list-active-question-papers table th,
+#list-inactive-question-papers table td, #list-inactive-question-papers table th,
+#edit-question-paper td, #edit-question-paper th,
+#list-unchecked-answer-papers table td, #list-unchecked-answer-papers table th,
+#list-checked-answer-papers table td, #list-checked-answer-papers table th,
+#edit-answer-paper table td, #edit-answer-paper table th,
+#list-exam-papers table td, #list-exam-papers th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #006600;
+    padding: 10px;
+}
+
+#list-users table th, #profile table th, #results table th, #list-students table th,
+#list-active-question-papers table th, #list-inactive-question-papers table th,
+#edit-question-paper th, #list-unchecked-answer-papers table th, #list-checked-answer-papers table th,
+#edit-answer-paper table th, #list-exam-papers table th {
+    background-color: #ffffcc;
+}
+
+#profile table, #edit-question-paper, #edit-answer-paper, #list-exam-papers {
+    font-size: 1.2em;
+}
+
+#list-active-question-papers table, #list-inactive-question-papers table, #edit-question-paper form,
+#list-unchecked-answer-papers table, #list-checked-answer-papers table {
+    margin-bottom: 40px;
+}
+
+/* #endregion */
+
+/* #region - Edit, Add, Delete User, Question Paper, Answer Paper, Exams */
+
+#edit-user form, #add-user form div, #add-question-paper form div {
+    margin: 25px 0;
+}
+
+#edit-user form label, #add-user form label, #add-question-paper form label, #list-exam-papers form label {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#edit-user form input, #edit-user form select, #delete-user input, #add-user form input, #add-user form select,
+#edit-question-paper input, #add-question-paper form input, #edit-answer-paper form input, #list-exam-papers form input {
+    height: 2em;
+    padding: 0 10px;
+    width: calc(90% - 10px);
+    max-width: 300px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+#edit-user form select, #edit-user form input[type=date], #add-user form select, #add-user form input[type=date],
+#add-question-paper form input[type=number], #edit-answer-paper form input[type=number] {
+    max-width: 150px;
+}
+
+#edit-user form #course, #edit-user form #phone, #add-user form #course, #add-user form #phone {
+    max-width: 200px;
+}
+
+#edit-user input[type=checkbox], #add-user input[type=checkbox] {
+    width: 2em;
+    vertical-align: middle;
+}
+
+#edit-user form textarea, #add-user form textarea {
+    resize: none;
+    width: 50%;
+    max-width: 300px;
+    height: 100px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+
+#edit-user form input[type=button], #edit-user form input[type=submit], #delete-user input[type=submit],
+#edit-question-paper input[type=submit], #edit-answer-paper form input[type=submit], #list-exam-papers form input[type=submit] {
+    width: 6em;
+    margin-left: 30px;
+}
+
+#add-user form input[type=submit], #delete-user input[type=submit], #edit-question-paper input[type=submit],
+#add-question-paper form input[type=submit] {
+    font-size: 1.2em;
+}
+
+#edit-answer-paper form input[type=submit], #list-exam-papers form input[type=submit] {
+    width: 8em;
+}
+
+/* #endregion */
+
+/* #region - Add, upload question paper, list exams and others */
+
+#add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
+    padding: 9px 30px;
+    text-align: center;
+    margin-left: 30px;
+    font-size: 1.25em;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#back, #home, #logout, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
+#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-question-paper form input #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
+    margin-left: 0;
+}
+
+#edit-question-paper form {
+    margin-top: 20px;
+}
+
+#edit-answer-paper form, #list-exam-papers form, #list-exam-papers form {
+    margin-top: 40px;
+}
+
+#edit-answer-paper table, #list-exam-papers, #list-exam-papers table {
+    margin-bottom: 20px;
+}
+
+#list-exam-papers a {
+    margin: 10px;
+}
+
+/* #endregion */

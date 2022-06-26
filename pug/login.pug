@@ -1,0 +1,17 @@
+//- Log in page
+
+extends base.pug
+
+block page-head 
+    title Log in 
+
+block page-main 
+    section#user-login
+        h1 Log in
+        form(action="/login" method="POST")
+            label(for="userid") User Id :
+            input(required="required" type="text" placeholder="Enter User Id" name="userid" pattern="II1[0-9]{7}")
+            label(for="password") Password :
+            input(required="required" type="password" placeholder="Enter Password" name="password" pattern="[\w\d\.\+\*\-#@]{5,10}")
+            input(type="submit" value="Log in")
+            a(href="/forgot") Forgot credentials?

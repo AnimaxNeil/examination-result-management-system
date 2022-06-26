@@ -1,0 +1,42 @@
+//- list of students
+
+extends base.pug 
+
+block page-head 
+    title Students
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#list-students
+        h1 Students
+        if students 
+            table 
+                tr 
+                    th 
+                    th User Id
+                    th Name
+                    th Course
+                    th Date of Birth
+                    th Email
+                    th Phone
+                    th Address
+                - let slno=0
+                each student in students
+                    - slno++
+                    - student.userid = get_valid_userid(student.userid)
+                    tr
+                        td #{slno}
+                        td #{student.userid}
+                        td #{student.name}
+                        - let course=student.course.toUpperCase()
+                        td #{course}
+                        td #{student.dob}
+                        td #{student.email} 
+                        td #{student.phone} 
+                        td #{student.address}
+        else 
+            span No students found
+        

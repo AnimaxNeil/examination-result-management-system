@@ -1,0 +1,41 @@
+//- list of all kinds of users
+
+extends base.pug
+
+block page-head 
+    title Users 
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main
+    section#list-users
+        h1 Users 
+        if users
+            table 
+                tr 
+                    th 
+                    th User Id
+                    th Password
+                    th Type
+                    th Active
+                    th Link
+                - let slno=0
+                each user in users
+                    - slno++
+                    - user.userid = get_valid_userid(user.userid)
+                    div#user-info
+                        tr 
+                            td #{slno}
+                            td #{user.userid} 
+                            td #{user.password} 
+                            - let type = user.type
+                            - type = type[0].toUpperCase() + type.substring(1);
+                            td #{type} 
+                            - const active=user.active==1?"Yes":"No" 
+                            td #{active} 
+                            td: a(href="/user/"+user.userid) View 
+        else 
+            span No users found
+

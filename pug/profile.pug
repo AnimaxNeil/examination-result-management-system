@@ -1,0 +1,74 @@
+//- profile info of user
+
+extends base.pug
+
+block page-head 
+    title Profile
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#profile
+        h1 Profile
+        if student
+            - student.userid = get_valid_userid(student.userid)
+            table 
+                tr 
+                    th Type
+                    td Student
+                tr
+                    th User Id
+                    td #{student.userid}
+                tr
+                    th Name
+                    td #{student.name}
+                tr
+                    th Course
+                    td #{student.course}
+                tr
+                    th Date of Birth
+                    td #{student.dob}
+                tr
+                    th Email
+                    td #{student.email}
+                tr
+                    th Phone
+                    td #{student.phone}
+                tr
+                    th Address
+                    td #{student.address}
+                tr
+        else if teacher
+            - teacher.userid = get_valid_userid(teacher.userid)
+            table 
+                tr 
+                    th Type
+                    td Teacher
+                tr
+                    th User Id
+                    td #{teacher.userid}
+                tr
+                    th Name
+                    td #{teacher.name}
+                tr
+                    th Course
+                    td #{teacher.course}
+                tr
+                    th Date of Birth
+                    td #{teacher.dob}
+                tr
+                    th Email
+                    td #{teacher.email}
+                tr
+                    th Phone
+                    td #{teacher.phone}
+                tr
+                    th Address
+                    td #{teacher.address}
+                tr
+        else
+            span Profile not found
+
+    

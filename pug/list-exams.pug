@@ -1,0 +1,40 @@
+//- view exam question papers list
+
+extends base.pug
+
+block page-head 
+    title Exams 
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#list-exam-papers
+        h1 Ongoing Exams
+        if qPaper && qPaper.filename
+            table 
+                tr 
+                    th Paper
+                    td #{qPaper.filename}
+                tr
+                    th Course
+                    td #{qPaper.course}
+                tr
+                    th Full Marks
+                    td #{qPaper.marks}
+                tr 
+                    th Date
+                    td #{qPaper.modified_date} 
+            a(href="/download/question-paper/"+qPaper.filename) Download
+            if aPaper && aPaper.userid
+                - aPaper.userid = get_valid_userid(aPaper.userid)
+                a(href="/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Submitted on #{aPaper.submit_date}
+            else 
+                form(action="/submit-exam" method="POST" enctype="multipart/form-data")
+                    input(type="hidden" name="Qname" value=qPaper.filename)
+                    label(for="Afile") Upload File :
+                    input#qfile(type="file" name="Afile" accept=".pdf" required="required")
+                    input(type="submit" value="Submit")
+        else 
+            span No exam found

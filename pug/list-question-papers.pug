@@ -1,0 +1,60 @@
+//- view question papers list
+
+extends base.pug
+
+block page-head 
+    title Question Papers
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    if qPapers
+        section#list-active-question-papers
+            h1 Active Question Papers
+            table 
+                tr 
+                    th 
+                    th Name
+                    th Course
+                    th Modified Date
+                    th Active 
+                    th Link
+                - let slno1=0
+                each qPaper in qPapers 
+                    if qPaper.active==true
+                        - slno1++
+                        tr 
+                            td #{slno1}
+                            td #{qPaper.filename}
+                            td #{qPaper.course} 
+                            td #{qPaper.modified_date} 
+                            td Yes
+                            td: a(href="/question-paper/"+qPaper.filename) View
+        hr
+        section#list-inactive-question-papers
+            h1 Inactive Question Papers 
+            table 
+                tr 
+                    th 
+                    th Name
+                    th Course
+                    th Modified Date
+                    th Active 
+                    th Link
+                - let slno2=0
+                each qPaper in qPapers 
+                    if qPaper.active==false 
+                        -slno2++
+                        tr 
+                            td #{slno2}
+                            td #{qPaper.filename}
+                            td #{qPaper.course} 
+                            td #{qPaper.modified_date} 
+                            td No
+                            td: a(href="/question-paper/"+qPaper.filename) View
+    hr
+    section#add-question-paper-option
+        h1 Add Question Paper?
+        a(href="/add-question-paper") Add

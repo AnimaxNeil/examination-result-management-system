@@ -1,0 +1,47 @@
+//- edit answer paper form
+
+extends base.pug 
+
+block page-head 
+    title View AnswerPaper 
+
+block page-header 
+    header 
+        if aPaper
+            a#back(href="/question-paper/"+aPaper.question_filename) Go Back
+        a#home(href="/") Home
+        a#logout(href="/logout") Log Out
+        
+block page-main 
+    section#edit-answer-paper
+        h1 Answer Paper 
+        if aPaper
+            - aPaper.userid = get_valid_userid(aPaper.userid)
+            table 
+                tr 
+                    th User Id
+                    td #{aPaper.userid}
+                tr
+                    th Paper Name
+                    td #{aPaper.question_filename}
+                tr
+                    th Submission Date
+                    td #{aPaper.submit_date}
+                tr 
+                    th Marks Obtained
+                    - const marks = aPaper.marks || aPaper.marks == 0 ? aPaper.marks : "Unset"
+                    td #{marks}
+            a(href="/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Download
+            form(action="/edit-answer-paper", method="POST")
+                input(type="hidden" name="Qname" value=aPaper.question_filename)
+                input(type="hidden" name="userid" value=aPaper.userid)
+                label(for="marks") Update Marks : 
+                input(required="required" type="number" name="marks" min="-1" max="9999") 
+                input(type="submit" value="Send Marks")
+        else 
+            span Answer Paper not found.
+        
+
+                        
+
+        

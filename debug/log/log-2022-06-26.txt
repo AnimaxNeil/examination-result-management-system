@@ -1,0 +1,272 @@
+[21:15:36](info)+ |=user> (null) |=info> db connection
+[21:15:36](info)+ |=user> (null) |=info> db connection
+[21:15:38](info)+ |=user> (null) |=get> /login |=info> sent
+[21:15:42](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[21:15:42](info)+ |=user> 1(admin) |=get> / |=info> sent
+[21:15:43](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[21:15:48](info)+ |=user> 1(admin) |=get> / |=info> sent
+[21:15:50](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[21:16:10](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[21:16:10](info)+ |=user> 1(admin) |=get> /user/II10000011 |=info> sent
+[21:16:17](info)+ |=user> 1(admin) |=get> / |=info> sent
+[21:16:18](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[21:16:21](info)+ |=user> 1(admin) |=get> / |=info> sent
+[21:16:24](info)+ |=user> (null) |=get> /logout |=info> sent
+[21:16:24](info)+ |=user> (null) |=get> /login |=info> sent
+[21:16:38](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:6
+[21:16:38](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:16:40](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:16:44](info)+ |=user> 6(teacher) |=get> /question-paper/gfggsgsggsgsdgsgs |=info> sent
+[21:16:48](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:16:50](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:16:53](info)+ |=user> 6(teacher) |=post> /edit-question-paper |=info> updated
+[21:16:54](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:16:55](info)+ |=user> 6(teacher) |=post> /edit-question-paper |=info> updated
+[21:16:55](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:16:57](info)+ |=user> 6(teacher) |=post> /edit-question-paper |=info> updated
+[21:16:57](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:16:59](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:17:05](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:17:06](info)+ |=user> 6(teacher) |=get> /students |=info> sent
+[21:17:13](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:17:15](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:17:17](info)+ |=user> 6(teacher) |=get> /question-paper/bggdhdghehhdzgdfhdfghbdfgbd |=info> sent
+[21:17:21](info)+ |=user> 6(teacher) |=get> /answer-paper/bggdhdghehhdzgdfhdfghbdfgbd-ANS-II10000005 |=info> not found
+[21:17:21](info)+ |=user> 6(teacher) |=get> /question-paper/bggdhdghehhdzgdfhdfghbdfgbd |=info> sent
+[21:17:24](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:17:24](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:17:26](info)+ |=user> 6(teacher) |=get> /profile |=info> sent
+[21:17:51](info)+ |=user> 6(teacher) |=get> /profile |=info> sent
+[21:17:54](info)+ |=user> (null) |=get> /logout |=info> sent
+[21:17:54](info)+ |=user> (null) |=get> /login |=info> sent
+[21:17:59](info)+ |=user> (null) |=info> db connection
+[21:17:59](info)+ |=user> (null) |=info> db connection
+[21:18:03](info)+ |=user> (null) |=info> db connection
+[21:18:03](info)+ |=user> (null) |=info> db connection
+[21:18:06](info)+ |=user> (null) |=get> /login |=info> sent
+[21:18:16](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:5
+[21:18:16](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:18](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:18:21](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:22](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:18:29](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:30](info)+ |=user> 5(student) |=get> /results |=info> sent
+[21:18:32](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:32](info)+ |=user> 5(student) |=get> /profile |=info> sent
+[21:18:35](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:36](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:18:40](info)+ |=user> 5(student) |=get> /download/question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:18:45](info)+ |=user> 5(student) |=post> /submit-exam |=info> submitted successfully
+[21:18:45](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:18:46](info)+ |=user> 5(student) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-5 |=info> invalid input
+[21:18:46](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:50](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:18:51](info)+ |=user> 5(student) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-5 |=info> invalid input
+[21:18:51](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:18:51](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:19:00](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:22:20](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:22:25](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:23:43](info)+ |=user> (null) |=info> db connection
+[21:23:43](info)+ |=user> (null) |=info> db connection
+[21:23:44](info)+ |=user> (null) |=get> /exams |=info> permission denied
+[21:23:44](info)+ |=user> (null) |=get> / |=info> permission denied
+[21:23:44](info)+ |=user> (null) |=get> /login |=info> sent
+[21:23:52](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:5
+[21:23:52](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:23:53](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:23:54](info)+ |=user> 5(student) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> downloaded
+[21:25:36](info)+ |=user> (null) |=info> db connection
+[21:25:36](info)+ |=user> (null) |=info> db connection
+[21:25:38](info)+ |=user> (null) |=get> /exams |=info> permission denied
+[21:25:38](info)+ |=user> (null) |=get> / |=info> permission denied
+[21:25:39](info)+ |=user> (null) |=get> /login |=info> sent
+[21:25:44](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:5
+[21:25:44](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:25:45](info)+ |=user> 5(student) |=get> /exams |=info> sent
+[21:25:46](info)+ |=user> 5(student) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> downloaded
+[21:25:50](info)+ |=user> 5(student) |=get> /download/question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:25:54](info)+ |=user> (null) |=get> /logout |=info> sent
+[21:25:54](info)+ |=user> (null) |=get> /login |=info> sent
+[21:26:01](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:6
+[21:26:01](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:26:02](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:26:10](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:26:12](info)+ |=user> 6(teacher) |=post> /edit-question-paper |=info> updated
+[21:26:12](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:26:15](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:26:18](info)+ |=user> 6(teacher) |=get> /question-paper/bggdhdghehhdzgdfhdfghbdfgbd |=info> sent
+[21:26:22](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:26:25](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:26:27](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> not found
+[21:26:28](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:26:30](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> not found
+[21:26:30](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:28:59](info)+ |=user> (null) |=info> db connection
+[21:28:59](info)+ |=user> (null) |=info> db connection
+[21:29:00](info)+ |=user> (null) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> permission denied
+[21:29:00](info)+ |=user> (null) |=get> / |=info> permission denied
+[21:29:00](info)+ |=user> (null) |=get> /login |=info> sent
+[21:29:10](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:6
+[21:29:10](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:29:11](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:29:14](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:29:16](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:29:18](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:29:23](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:29:25](info)+ |=user> 6(teacher) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> downloaded
+[21:29:31](info)+ |=user> 6(teacher) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> downloaded
+[21:29:37](info)+ |=user> 6(teacher) |=post> /edit-answer-paper |=info> updated
+[21:29:37](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-5 |=info> invalid input
+[21:29:37](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:29:43](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:29:45](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:29:47](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:29:50](info)+ |=user> 6(teacher) |=post> /edit-answer-paper |=info> updated
+[21:29:50](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-5 |=info> invalid input
+[21:29:50](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:32:21](info)+ |=user> (null) |=info> db connection
+[21:32:21](info)+ |=user> (null) |=info> db connection
+[21:32:22](info)+ |=user> (null) |=get> / |=info> permission denied
+[21:32:23](info)+ |=user> (null) |=get> /login |=info> sent
+[21:32:31](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:6
+[21:32:31](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:32:32](info)+ |=user> 6(teacher) |=get> /question-papers |=info> sent
+[21:32:34](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:32:36](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:32:39](info)+ |=user> 6(teacher) |=post> /edit-answer-paper |=info> updated
+[21:32:39](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:32:43](info)+ |=user> 6(teacher) |=post> /edit-answer-paper |=info> updated
+[21:32:43](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:32:45](info)+ |=user> 6(teacher) |=post> /edit-answer-paper |=info> updated
+[21:32:45](info)+ |=user> 6(teacher) |=get> /answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> sent
+[21:32:47](info)+ |=user> 6(teacher) |=get> /download/answer-paper/hilapila-geela-eeeelllaa-ANS-II10000005 |=info> downloaded
+[21:32:51](info)+ |=user> 6(teacher) |=get> /question-paper/hilapila-geela-eeeelllaa |=info> sent
+[21:32:54](info)+ |=user> 6(teacher) |=get> / |=info> sent
+[21:32:55](info)+ |=user> 6(teacher) |=get> /students |=info> sent
+[21:32:58](info)+ |=user> (null) |=get> /logout |=info> sent
+[21:32:58](info)+ |=user> (null) |=get> /login |=info> sent
+[21:33:03](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:5
+[21:33:03](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:33:05](info)+ |=user> 5(student) |=get> /results |=info> sent
+[21:33:08](info)+ |=user> 5(student) |=get> / |=info> sent
+[21:33:09](info)+ |=user> (null) |=get> /logout |=info> sent
+[21:33:09](info)+ |=user> (null) |=get> /login |=info> sent
+[22:54:16](info)+ |=user> (null) |=info> db connection
+[22:54:16](info)+ |=user> (null) |=info> db connection
+[22:54:22](info)+ |=user> (null) |=get> / |=info> permission denied
+[22:54:23](info)+ |=user> (null) |=get> /login |=info> sent
+[22:54:49](info)+ |=user> (null) |=get> /forgot |=info> sent
+[22:54:53](info)+ |=user> (null) |=get> /login |=info> sent
+[22:55:01](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[22:55:01](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:55:11](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:55:13](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:55:14](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:55:26](info)+ |=user> 1(admin) |=get> /user/II10000005 |=info> sent
+[22:55:28](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:55:29](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:55:37](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[22:56:36](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[22:56:36](info)+ |=user> 1(admin) |=get> /user/II10000012 |=info> sent
+[22:56:50](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:56:54](info)+ |=user> 1(admin) |=get> /user/II10000012 |=info> sent
+[22:57:01](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[22:57:01](info)+ |=user> 1(admin) |=get> /user/II10000012 |=info> sent
+[22:57:22](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[22:57:23](info)+ |=user> 1(admin) |=get> /user/II10000012 |=info> sent
+[22:57:27](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[22:57:27](info)+ |=user> 1(admin) |=get> /user/II10000012 |=info> sent
+[22:57:31](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:57:31](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:57:32](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[22:58:08](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[22:58:08](info)+ |=user> 1(admin) |=get> /user/II10000013 |=info> sent
+[22:58:11](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:58:12](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:58:15](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:58:15](info)+ |=user> (null) |=get> /logout |=info> sent
+[22:58:15](info)+ |=user> (null) |=get> /login |=info> sent
+[22:58:41](info)+ |=user> (null) |=post> /login |=info> login failed, userid:11
+[22:58:41](info)+ |=user> (null) |=get> /login |=info> sent
+[22:58:46](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[22:58:46](info)+ |=user> 1(admin) |=get> / |=info> sent
+[22:58:48](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[22:58:55](info)+ |=user> (null) |=get> /logout |=info> sent
+[22:58:55](info)+ |=user> (null) |=get> /login |=info> sent
+[22:59:03](info)+ |=user> (null) |=post> /login |=info> login failed, userid:11
+[22:59:03](info)+ |=user> (null) |=get> /login |=info> sent
+[22:59:12](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:12
+[22:59:12](info)+ |=user> 12(student) |=get> / |=info> sent
+[22:59:19](info)+ |=user> 12(student) |=get> /profile |=info> sent
+[22:59:23](info)+ |=user> 12(student) |=get> / |=info> sent
+[22:59:24](info)+ |=user> 12(student) |=get> /results |=info> sent
+[22:59:27](info)+ |=user> 12(student) |=get> / |=info> sent
+[22:59:28](info)+ |=user> 12(student) |=get> /exams |=info> sent
+[22:59:31](info)+ |=user> 12(student) |=get> / |=info> sent
+[22:59:34](info)+ |=user> (null) |=get> /logout |=info> sent
+[22:59:34](info)+ |=user> (null) |=get> /login |=info> sent
+[22:59:44](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:13
+[22:59:44](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[22:59:47](info)+ |=user> 13(teacher) |=get> /profile |=info> sent
+[22:59:49](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[22:59:50](info)+ |=user> 13(teacher) |=get> /profile |=info> sent
+[22:59:52](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[22:59:53](info)+ |=user> 13(teacher) |=get> /students |=info> sent
+[22:59:59](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:00:00](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:00:03](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:00:04](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:00:07](info)+ |=user> 13(teacher) |=get> /add-question-paper |=info> sent
+[23:00:45](info)+ |=user> 13(teacher) |=post> /add-question-paper |=info> submitted successfully
+[23:00:45](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:00:53](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:00:55](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:00:57](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:00:58](info)+ |=user> 13(teacher) |=post> /edit-question-paper |=info> updated
+[23:00:58](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:01:02](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:01:03](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:01:05](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:01:06](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:01:06](info)+ |=user> (null) |=get> /login |=info> sent
+[23:01:15](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:12
+[23:01:15](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:01:17](info)+ |=user> 12(student) |=get> /exams |=info> sent
+[23:01:26](info)+ |=user> 12(student) |=get> /download/question-paper/comp-sem1-2022 |=info> sent
+[23:01:36](info)+ |=user> 12(student) |=post> /submit-exam |=info> submitted successfully
+[23:01:36](info)+ |=user> 12(student) |=get> /exams |=info> sent
+[23:01:39](info)+ |=user> 12(student) |=get> /exams |=info> sent
+[23:01:43](info)+ |=user> 12(student) |=get> /download/answer-paper/comp-sem1-2022-ANS-II10000012 |=info> downloaded
+[23:01:47](info)+ |=user> 12(student) |=get> /download/answer-paper/comp-sem1-2022-ANS-II10000012 |=info> downloaded
+[23:01:50](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:01:51](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:01:51](info)+ |=user> (null) |=get> /login |=info> sent
+[23:01:58](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:13
+[23:01:58](info)+ |=user> 13(teacher) |=get> / |=info> sent
+[23:02:00](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:02:02](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:02:03](info)+ |=user> 13(teacher) |=post> /edit-question-paper |=info> updated
+[23:02:03](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:02:12](info)+ |=user> 13(teacher) |=get> /answer-paper/comp-sem1-2022-ANS-II10000012 |=info> sent
+[23:02:14](info)+ |=user> 13(teacher) |=get> /download/answer-paper/comp-sem1-2022-ANS-II10000012 |=info> downloaded
+[23:02:19](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:02:20](info)+ |=user> 13(teacher) |=get> /download/question-paper/comp-sem1-2022 |=info> sent
+[23:02:23](info)+ |=user> 13(teacher) |=get> /answer-paper/comp-sem1-2022-ANS-II10000012 |=info> sent
+[23:02:24](info)+ |=user> 13(teacher) |=get> /download/answer-paper/comp-sem1-2022-ANS-II10000012 |=info> downloaded
+[23:02:33](info)+ |=user> 13(teacher) |=post> /edit-answer-paper |=info> updated
+[23:02:33](info)+ |=user> 13(teacher) |=get> /answer-paper/comp-sem1-2022-ANS-II10000012 |=info> sent
+[23:02:36](info)+ |=user> 13(teacher) |=get> /question-paper/comp-sem1-2022 |=info> sent
+[23:02:41](info)+ |=user> 13(teacher) |=get> /question-papers |=info> sent
+[23:02:42](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:02:42](info)+ |=user> (null) |=get> /login |=info> sent
+[23:02:51](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:12
+[23:02:51](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:02:52](info)+ |=user> 12(student) |=get> /exams |=info> sent
+[23:02:54](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:02:55](info)+ |=user> 12(student) |=get> /results |=info> sent
+[23:03:02](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:03:06](info)+ |=user> 12(student) |=get> /results |=info> sent
+[23:03:11](info)+ |=user> 12(student) |=get> / |=info> sent
+[23:03:12](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:03:12](info)+ |=user> (null) |=get> /login |=info> sent

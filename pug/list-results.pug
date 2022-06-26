@@ -1,0 +1,35 @@
+//- list answer paper marks as results
+
+extends base.pug
+
+block page-head 
+    title Results 
+
+block page-header 
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    section#results
+        h1 Results
+        if results 
+            table 
+                tr 
+                    th 
+                    th Paper
+                    th Course
+                    th Submition date
+                    th Marks
+                - let slno=0
+                each result in results 
+                    -slno++
+                    tr
+                        td #{slno}
+                        td #{result.question_filename} 
+                        td #{result.course}
+                        td #{result.submit_date} 
+                        td #{result.marks_obtained} / #{result.full_marks}
+        else 
+            span No results found 
+            
+

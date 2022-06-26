@@ -1,0 +1,86 @@
+//- edit question paper form or view answer papers
+
+extends base.pug
+
+block page-head 
+    title View Question Paper
+
+block page-header
+    a#back(href="/question-papers") Go Back
+    a#home(href="/") Home
+    a#logout(href="/logout") Log Out
+
+block page-main 
+    if qPaper
+        section#edit-question-paper
+            h1 Question Paper
+            table 
+                tr
+                    th Name 
+                    td #{qPaper.filename}
+                tr
+                    th Course
+                    td #{qPaper.course}
+                tr 
+                    th Full Marks
+                    td #{qPaper.marks}
+                tr 
+                    th Modified Date
+                    td #{qPaper.modified_date}
+                tr  
+                    th Active
+                    - const active=qPaper.active==1?"Yes":"No"
+                    td #{active}
+            form(id=id action="/edit-question-paper", method="POST")
+                a(href="/download/question-paper/"+qPaper.filename) Download
+                input(type="hidden" name="Qname" value=qPaper.filename)
+                if qPaper.active==0
+                    input(type="hidden" name="activate" value="true")
+                    input(type="submit" value="Activate")
+                else 
+                    input(type="hidden" name="activate" value="false")
+                    input(type="submit" value="De-Activate")
+            hr
+        if aPapers
+            section#list-unchecked-answer-papers
+                h1 Unchecked Answer Papers 
+                table 
+                    tr
+                        th 
+                        th User Id
+                        th Submission Date
+                        th Marks Obtained
+                        th Link
+                    - let slno1=0
+                    each aPaper in aPapers 
+                        if !aPaper.marks && aPaper.marks!=0
+                            - slno1++
+                            - aPaper.userid = get_valid_userid(aPaper.userid)
+                            tr
+                                td #{slno1}
+                                td #{aPaper.userid} 
+                                td #{aPaper.submit_date} 
+                                td Unset
+                                td: a(href="/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
+            hr
+            section#list-checked-answer-papers
+                h1 Checked Answer Papers 
+                table 
+                    tr 
+                        th 
+                        th User Id
+                        th Submission Date
+                        th Marks Obtained
+                        th Link
+                    - let slno2=0
+                    each aPaper in aPapers 
+                        if aPaper.marks || aPaper.marks==0
+                            - slno2++
+                            - aPaper.userid = get_valid_userid(aPaper.userid)
+                            tr
+                                td #{slno2}
+                                td #{aPaper.userid} 
+                                td #{aPaper.submit_date} 
+                                td #{aPaper.marks}
+                                td: a(href="/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
+            hr
