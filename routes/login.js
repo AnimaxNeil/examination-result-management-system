@@ -10,9 +10,9 @@ const logger = require(global.__basedir + "/custom-modules/logger");
 const loggerLog = (req, err, info) => {
     const level = err ? "error" : "info";
     if (req.method == "GET")
-        logger.writeToFile(level, logger.getFormattedMessage({ get: req.originalUrl, info: info, error: err }));
+        logger.writeToFile(level, logger.getFormattedMessage({ get: req.originalUrl, error: err, info: info }));
     else if (req.method == "POST")
-        logger.writeToFile(level, logger.getFormattedMessage({ post: req.originalUrl, info: info, error: err }));
+        logger.writeToFile(level, logger.getFormattedMessage({ post: req.originalUrl, error: err, info: info }));
 }
 
 // database connection
@@ -25,6 +25,8 @@ const sql = require(global.__basedir + "/custom-modules/sql-commands");
 
 // check validity of various input feilds
 const vfv = require(global.__basedir + "/custom-modules/verify-values");
+// valid regex for the front end
+let rgxub = require(global.__basedir + "/custom-modules/regex-unbounded");
 
 
 router.get("/", (req, res) => {
@@ -33,7 +35,14 @@ router.get("/", (req, res) => {
         loggerLog(req, null, "permission denied");
     }
     else {
-        res.render("login");
+        const errorMsg = req.session.errorMsg;
+        const successMsg = req.session.successMsg;
+        req.session.errorMsg = req.session.successMsg = null;
+        res.render("login", {
+            rgx: rgxub,
+            errorMsg: errorMsg,
+            successMsg: successMsg
+        });
         loggerLog(req, null, "sent");
     }
 });
@@ -50,10 +59,12 @@ const authenticate_user = (req, res) => {
                 userid: users[0].userid,
                 type: users[0].type,
             });
+            req.session.successMsg = "Login successfull. User Id: " + req.session.user.userid;
             res.redirect("/");
             loggerLog(req, null, "login successfull, userid:" + req.body.userid);
         }
         else {
+            req.session.errorMsg = "Login failed. Incorrect credentials or the associated user account is inactive.";
             res.redirect("/login");
             loggerLog(req, null, "login failed, userid:" + req.body.userid);
         }
@@ -70,7 +81,7 @@ router.post("/", (req, res) => {
     }
     else {
         res.redirect("/login");
-        loggerLog(req, null, "not found");
+        loggerLog(req, null, "invalid input");
     }
 });
 

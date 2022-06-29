@@ -1,0 +1,216 @@
+[16:36:24](info)+ |=user> (null) |=info> db connection |=error> Error: connect ECONNREFUSED 127.0.0.1:3306
+[16:36:24](info)+ |=user> (null) |=info> db connection |=error> Error: connect ECONNREFUSED 127.0.0.1:3306
+[16:36:40](info)+ |=user> (null) |=info> db connection
+[16:36:40](info)+ |=user> (null) |=info> db connection
+[16:36:46](info)+ |=user> (null) |=get> / |=info> permission denied
+[16:36:48](info)+ |=user> (null) |=get> /login |=info> sent
+[16:37:05](info)+ |=user> (null) |=post> /login |=info> login failed, userid:400
+[16:37:05](info)+ |=user> (null) |=get> /login |=info> sent
+[16:41:45](info)+ |=user> (null) |=info> db connection
+[16:41:45](info)+ |=user> (null) |=info> db connection
+[16:41:48](info)+ |=user> (null) |=get> /login |=info> sent
+[16:41:56](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:42:09](info)+ |=user> (null) |=get> /login |=info> sent
+[16:44:04](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:45:12](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:51:28](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:54:21](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:56:50](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[16:58:11](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:00:55](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:03:41](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:04:19](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:04:25](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:04:34](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:14:42](info)+ |=user> (null) |=info> db connection
+[17:14:42](info)+ |=user> (null) |=info> db connection
+[17:14:47](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:14:47](info)+ |=user> (null) |=get> /login |=info> sent
+[17:14:53](info)+ |=user> (null) |=get> /login |=info> sent
+[17:14:54](info)+ |=user> (null) |=get> /login |=info> sent
+[17:15:04](info)+ |=user> (null) |=post> /login |=info> login failed, userid:0
+[17:15:04](info)+ |=user> (null) |=get> /login |=info> sent
+[17:15:09](info)+ |=user> (null) |=get> /login |=info> sent
+[17:15:10](info)+ |=user> (null) |=get> /login |=info> sent
+[17:15:11](info)+ |=user> (null) |=get> /login |=info> sent
+[17:15:11](info)+ |=user> (null) |=get> /login |=info> sent
+[17:29:40](info)+ |=user> (null) |=info> db connection
+[17:29:40](info)+ |=user> (null) |=info> db connection
+[17:35:19](info)+ |=user> (null) |=info> db connection
+[17:35:19](info)+ |=user> (null) |=info> db connection
+[17:35:20](info)+ |=user> (null) |=get> /login |=info> sent
+[17:35:25](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[17:35:25](info)+ |=user> 1(admin) |=get> / |=info> sent
+[17:35:32](info)+ |=user> 1(admin) |=get> / |=info> sent
+[17:35:34](info)+ |=user> (null) |=get> /logout |=info> sent
+[17:35:34](info)+ |=user> (null) |=get> /login |=info> sent
+[17:35:47](info)+ |=user> (null) |=post> /login |=info> login failed, userid:1
+[17:35:47](info)+ |=user> (null) |=get> /login |=info> sent
+[17:36:52](info)+ |=user> (null) |=info> db connection
+[17:36:52](info)+ |=user> (null) |=info> db connection
+[17:36:52](info)+ |=user> (null) |=get> /login |=info> sent
+[17:36:57](info)+ |=user> (null) |=post> /login |=info> login failed, userid:1
+[17:36:57](info)+ |=user> (null) |=get> /login |=info> sent
+[17:41:53](info)+ |=user> (null) |=info> db connection
+[17:41:53](info)+ |=user> (null) |=info> db connection
+[17:41:55](info)+ |=user> (null) |=get> /login |=info> sent
+[17:42:07](info)+ |=user> (null) |=post> /login |=info> login failed, userid:1
+[17:42:07](info)+ |=user> (null) |=get> /login |=info> sent
+[17:42:14](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[17:42:15](info)+ |=user> 1(admin) |=get> / |=info> sent
+[17:42:22](info)+ |=user> (null) |=get> /logout |=info> sent
+[17:42:22](info)+ |=user> (null) |=get> /login |=info> sent
+[17:42:50](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[17:42:50](info)+ |=user> 1(admin) |=get> / |=info> sent
+[17:42:55](info)+ |=user> (null) |=get> /logout |=info> sent
+[17:42:55](info)+ |=user> (null) |=get> /login |=info> sent
+[23:24:44](info)+ |=user> (null) |=info> db connection
+[23:24:44](info)+ |=user> (null) |=info> db connection
+[23:27:06](info)+ |=user> (null) |=get> / |=info> permission denied
+[23:27:07](info)+ |=user> (null) |=get> /login |=info> sent
+[23:29:11](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[23:29:11](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:29:20](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:29:20](info)+ |=user> (null) |=get> /login |=info> sent
+[23:29:38](info)+ |=user> (null) |=get> /login |=info> sent
+[23:29:53](info)+ |=user> (null) |=get> /login |=info> sent
+[23:30:08](info)+ |=user> (null) |=post> /login |=info> login failed, userid:1
+[23:30:08](info)+ |=user> (null) |=get> /login |=info> sent
+[23:30:17](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:1
+[23:30:17](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:30:22](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[23:30:26](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:30:28](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[23:30:31](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:30:32](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[23:30:36](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:30:39](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[23:31:51](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[23:31:51](info)+ |=user> 1(admin) |=get> /user/II10000017 |=info> sent
+[23:31:58](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:32:00](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[23:32:06](info)+ |=user> 1(admin) |=get> /user/II10000017 |=info> sent
+[23:32:16](info)+ |=user> 1(admin) |=get> /user/II10000017 |=info> sent
+[23:32:26](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[23:32:26](info)+ |=user> 1(admin) |=get> /user/II10000017 |=info> sent
+[23:32:34](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:32:35](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[23:33:28](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[23:33:28](info)+ |=user> 1(admin) |=get> /user/II10000018 |=info> sent
+[23:33:33](info)+ |=user> 1(admin) |=get> /users |=info> sent
+[23:33:51](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:33:52](info)+ |=user> 1(admin) |=get> /add-user |=info> sent
+[23:34:19](info)+ |=user> 1(admin) |=post> /add-user |=info> submitted successfully
+[23:34:19](info)+ |=user> 1(admin) |=get> /user/II10000019 |=info> sent
+[23:34:24](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[23:34:24](info)+ |=user> 1(admin) |=get> /user/II10000019 |=info> sent
+[23:34:27](info)+ |=user> 1(admin) |=post> /edit-user |=info> updated
+[23:34:27](info)+ |=user> 1(admin) |=get> /user/II10000019 |=info> sent
+[23:34:34](info)+ |=user> 1(admin) |=get> / |=info> sent
+[23:34:37](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:34:37](info)+ |=user> (null) |=get> /login |=info> sent
+[23:34:51](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:17
+[23:34:51](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:35:04](info)+ |=user> 17(student) |=get> /profile |=info> sent
+[23:35:08](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:35:09](info)+ |=user> 17(student) |=get> /results |=info> sent
+[23:35:12](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:35:13](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:35:17](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:35:17](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:35:17](info)+ |=user> (null) |=get> /login |=info> sent
+[23:35:26](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:19
+[23:35:26](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:35:40](info)+ |=user> 19(teacher) |=get> /profile |=info> sent
+[23:35:42](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:35:43](info)+ |=user> 19(teacher) |=get> /students |=info> sent
+[23:35:50](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:35:51](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:36:06](info)+ |=user> 19(teacher) |=get> /add-question-paper |=info> sent
+[23:37:02](info)+ |=user> 19(teacher) |=post> /add-question-paper |=info> submitted successfully
+[23:37:02](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:37:10](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:37:13](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:37:27](info)+ |=user> 19(teacher) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:37:34](info)+ |=user> 19(teacher) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:37:55](info)+ |=user> 19(teacher) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:38:18](info)+ |=user> 19(teacher) |=post> /edit-question-paper |=info> updated
+[23:38:18](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:38:21](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:38:43](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:38:44](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:38:44](info)+ |=user> (null) |=get> /login |=info> sent
+[23:38:56](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:17
+[23:38:56](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:38:58](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:39:05](info)+ |=user> 17(student) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:39:20](info)+ |=user> 17(student) |=post> /submit-exam |=info> submitted successfully
+[23:39:20](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:39:23](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:39:24](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:39:35](info)+ |=user> 17(student) |=get> /download/answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> downloaded
+[23:39:42](info)+ |=user> 17(student) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:39:45](info)+ |=user> 17(student) |=get> /download/answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> downloaded
+[23:39:48](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:39:50](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:40:00](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:40:01](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:40:01](info)+ |=user> (null) |=get> /login |=info> sent
+[23:40:08](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:18
+[23:40:08](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:40:09](info)+ |=user> 18(student) |=get> /exams |=info> sent
+[23:40:13](info)+ |=user> 18(student) |=get> /download/question-paper/cmsa-sem7-2022 |=info> sent
+[23:40:19](info)+ |=user> 18(student) |=post> /submit-exam |=info> submitted successfully
+[23:40:19](info)+ |=user> 18(student) |=get> /exams |=info> sent
+[23:40:21](info)+ |=user> 18(student) |=get> /download/answer-paper/cmsa-sem7-2022-ANS-II10000018 |=info> downloaded
+[23:40:49](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:40:51](info)+ |=user> 18(student) |=get> /exams |=info> sent
+[23:40:53](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:40:53](info)+ |=user> 18(student) |=get> /results |=info> sent
+[23:40:55](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:40:55](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:40:55](info)+ |=user> (null) |=get> /login |=info> sent
+[23:41:04](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:19
+[23:41:04](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:41:07](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:41:08](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:41:16](info)+ |=user> 19(teacher) |=post> /edit-question-paper |=info> updated
+[23:41:17](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:41:21](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> sent
+[23:41:26](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:41:27](info)+ |=user> 19(teacher) |=get> /students |=info> sent
+[23:41:29](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:41:30](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:41:31](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:41:32](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> sent
+[23:41:37](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:41:39](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> sent
+[23:41:41](info)+ |=user> 19(teacher) |=get> /download/answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> downloaded
+[23:41:54](info)+ |=user> 19(teacher) |=post> /edit-answer-paper |=info> updated
+[23:41:54](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000017 |=info> sent
+[23:41:56](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:42:09](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000018 |=info> sent
+[23:42:18](info)+ |=user> 19(teacher) |=post> /edit-answer-paper |=info> updated
+[23:42:18](info)+ |=user> 19(teacher) |=get> /answer-paper/cmsa-sem7-2022-ANS-II10000018 |=info> sent
+[23:42:20](info)+ |=user> 19(teacher) |=get> / |=info> sent
+[23:42:21](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:42:22](info)+ |=user> 19(teacher) |=get> /question-paper/cmsa-sem7-2022 |=info> sent
+[23:42:27](info)+ |=user> 19(teacher) |=get> /question-papers |=info> sent
+[23:42:28](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:42:28](info)+ |=user> (null) |=get> /login |=info> sent
+[23:42:35](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:17
+[23:42:35](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:42:37](info)+ |=user> 17(student) |=get> /exams |=info> sent
+[23:42:40](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:42:41](info)+ |=user> 17(student) |=get> /results |=info> sent
+[23:42:48](info)+ |=user> 17(student) |=get> / |=info> sent
+[23:42:49](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:42:49](info)+ |=user> (null) |=get> /login |=info> sent
+[23:42:55](info)+ |=user> (null) |=post> /login |=info> login successfull, userid:18
+[23:42:55](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:42:56](info)+ |=user> 18(student) |=get> /results |=info> sent
+[23:43:07](info)+ |=user> 18(student) |=get> / |=info> sent
+[23:43:09](info)+ |=user> (null) |=get> /logout |=info> sent
+[23:43:09](info)+ |=user> (null) |=get> /login |=info> sent
+[23:43:18](info)+ |=user> (null) |=get> /forgot |=info> sent
+[23:43:23](info)+ |=user> (null) |=get> /login |=info> sent

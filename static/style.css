@@ -61,20 +61,29 @@ main {
     margin: 60px 5% 80px 5%;
 }
 
-#response {
-    background-color: #ffcccc;
+#errorMsg, #successMsg {
     padding: 10px;
     max-width: 1060px;
     margin: 10px auto;
     border-width: 1px;
     border-style: solid;
-    border-color: #660000;
     font-size: 16px;
     clear: both;
+}
+
+#errorMsg {
+    background-color: #ffcccc;
+    border-color: #660000;
     color: #660000;
 }
 
-#response img {
+#successMsg {
+    background-color: #ccccff;
+    border-color: #000066;
+    color: #000066;
+}
+
+#errorMsg img, #successMsg img {
     vertical-align: middle;
     width: 15px;
     float: right;

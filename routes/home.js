@@ -29,11 +29,7 @@ const sql = require(global.__basedir + "/custom-modules/sql-commands");
 // check validity of various input feilds
 const vfv = require(global.__basedir + "/custom-modules/verify-values");
 // valid regex for the front end
-let rgxub = Object.assign({}, require(global.__basedir + "/custom-modules/regex"));
-for (const key in rgxub) {
-    rgxub[key] = rgxub[key].toString();
-    rgxub[key] = rgxub[key].substring(2, rgxub[key].length - 2);
-}
+let rgxub = require(global.__basedir + "/custom-modules/regex-unbounded");
 
 // handle file upload from forms
 const fileUpload = require('express-fileupload');
@@ -49,8 +45,13 @@ router.use(express.urlencoded({ extended: false }));
 
 router.get("/", (req, res) => {
     if (req.session.user) {
+        const errorMsg = req.session.errorMsg;
+        const successMsg = req.session.successMsg;
+        req.session.errorMsg = req.session.successMsg = null;
         res.render("home", {
-            userType: req.session.user.type
+            userType: req.session.user.type,
+            errorMsg: errorMsg,
+            successMsg: successMsg
         });
         loggerLog(req, null, "sent");
     }
@@ -74,6 +75,7 @@ router.get("/forgot", (req, res) => {
 router.get("/logout", (req, res) => {
     if (req.session.user) {
         req.session.user = null;
+        req.session.successMsg = "Log out successful.";
         res.redirect("/login");
         loggerLog(req, null, "sent");
     }
@@ -126,8 +128,13 @@ router.get("/users", (req, res) => {
                 loggerLog(req, err, null);
             }
             else {
+                const errorMsg = req.session.errorMsg;
+                const successMsg = req.session.successMsg;
+                req.session.errorMsg = req.session.successMsg = null;
                 res.render("list-users", {
-                    users: users
+                    users: users,
+                    errorMsg: errorMsg,
+                    successMsg: successMsg
                 });
                 loggerLog(req, null, "sent");
             }
@@ -155,10 +162,15 @@ router.get("/user/:userid", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
+                            const errorMsg = req.session.errorMsg;
+                            const successMsg = req.session.successMsg;
+                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("edit-user", {
                                 user: users[0],
                                 userInfo: students[0],
-                                rgx: rgxub
+                                rgx: rgxub,
+                                errorMsg: errorMsg,
+                                successMsg: successMsg
                             });
                             loggerLog(req, null, "sent");
                         }
@@ -171,10 +183,15 @@ router.get("/user/:userid", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
+                            const errorMsg = req.session.errorMsg;
+                            const successMsg = req.session.successMsg;
+                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("edit-user", {
                                 user: users[0],
                                 userInfo: teachers[0],
-                                rgx: rgxub
+                                rgx: rgxub,
+                                errorMsg: errorMsg,
+                                successMsg: successMsg
                             });
                             loggerLog(req, null, "sent");
                         }
@@ -234,6 +251,7 @@ router.post("/add-user", (req, res) => {
                                 loggerLog(req, err, null);
                             }
                             else {
+                                req.session.successMsg = "User added successfully.";
                                 res.redirect("/user/" + vfv.get_valid_userid(uRes.insertId));
                                 loggerLog(req, null, "submitted successfully");
                             }
@@ -247,6 +265,7 @@ router.post("/add-user", (req, res) => {
                                 loggerLog(req, err, null);
                             }
                             else {
+                                req.session.successMsg = "User added successfully.";
                                 res.redirect("/user/" + vfv.get_valid_userid(uRes.insertId));
                                 loggerLog(req, null, "submitted successfully");
                             }
@@ -453,9 +472,96 @@ router.post("/edit-user", (req, res) => {
     }
 });
 
-router.post("/delete-user", (req, res) => {
+router.post("/delete-users", (req, res) => {
     if (req.session.user && req.session.user.type == "admin") {
         if (vfv.verify(req.body.userid)) {
+            req.body.userid = vfv.get_real_userid(req.body.userid);
+            db.query(sql.get_users_with_id(req.body.userid), (err, users) => {
+                if (err) {
+                    res.redirect("/user/a");
+                    loggerLog(req, err, null);
+                }
+                else if (users[0] && vfv.verify_type(users[0].type)) {
+                    if (users[0].type == "student") {
+                        db.query(sql.delete_students_with_id(users[0].userid), (err, qRes) => {
+                            if (err) {
+                                res.redirect("/user/n" + vfv.get_valid_userid(users[0].userid));
+                                loggerLog(req, err, null);
+                            }
+                            else {
+                                db.query(sql.delete_all_answer_papers_with_id(users[0].userid), (err, aRes) => {
+                                    if (err) {
+                                        res.redirect("/user/i" + vfv.get_valid_userid(users[0].userid));
+                                        loggerLog(req, err, null);
+                                    }
+                                    else {
+                                        db.query(sql.delete_users_with_id(users[0].userid), (err, uRes) => {
+                                            if (err) {
+                                                res.redirect("/user/m" + vfv.get_valid_userid(users[0].userid));
+                                                loggerLog(req, err, null);
+                                            }
+                                            else {
+                                                res.redirect("/user/a");
+                                                loggerLog(req, null, "deleted");
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else if (users[0].type == "teacher") {
+                        db.query(sql.delete_teachers_with_id(users[0].userid), (err, qRes) => {
+                            if (err) {
+                                res.redirect("/user/x" + vfv.get_valid_userid(users[0].userid));
+                                loggerLog(req, err, null);
+                            }
+                            else {
+                                db.query(sql.delete_all_answer_papers_with_id(users[0].userid), (err, aRes) => {
+                                    if (err) {
+                                        res.redirect("/user/n" + vfv.get_valid_userid(users[0].userid));
+                                        loggerLog(req, err, null);
+                                    }
+                                    else {
+                                        db.query(sql.delete_users_with_id(users[0].userid), (err, uRes) => {
+                                            if (err) {
+                                                res.redirect("/user/i" + vfv.get_valid_userid(users[0].userid));
+                                                loggerLog(req, err, null);
+                                            }
+                                            else {
+                                                res.redirect("/user/l");
+                                                loggerLog(req, null, "deleted");
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+                else {
+                    res.redirect("/user/created");
+                    loggerLog(req, null, "not found");
+                }
+            });
+        }
+        else {
+            res.redirect("/users");
+            loggerLog(req, null, "missing input");
+        }
+    }
+    else {
+        res.redirect("/");
+        logger.writeToFile("info", logger.getFormattedMessage({
+            user: req.session.user, post: req.originalUrl, redirect: "/",
+            context: "delete user in DB -> " + req.body.userid, info: "permission denied"
+        }));
+    }
+});
+
+router.post("/delete-user", (req, res) => {
+    if (req.session.user && req.session.user.type == "admin") {
+        if (vfv.verify_userid(req.body.userid)) {
             req.body.userid = vfv.get_real_userid(req.body.userid);
             db.query(sql.get_users_with_id(req.body.userid), (err, users) => {
                 if (err) {
@@ -466,6 +572,7 @@ router.post("/delete-user", (req, res) => {
                     if (users[0].type == "student") {
                         db.query(sql.delete_students_with_id(users[0].userid), (err, qRes) => {
                             if (err) {
+                                req.session.errorMsg = "User deletion failed.";
                                 res.redirect("/user/" + vfv.get_valid_userid(users[0].userid));
                                 loggerLog(req, err, null);
                             }
@@ -482,6 +589,7 @@ router.post("/delete-user", (req, res) => {
                                                 loggerLog(req, err, null);
                                             }
                                             else {
+                                                req.session.successMsg = "User deleted successfully.";
                                                 res.redirect("/users");
                                                 loggerLog(req, null, "deleted");
                                             }
@@ -494,6 +602,7 @@ router.post("/delete-user", (req, res) => {
                     else if (users[0].type == "teacher") {
                         db.query(sql.delete_teachers_with_id(users[0].userid), (err, qRes) => {
                             if (err) {
+                                req.session.errorMsg = "User deletion failed."
                                 res.redirect("/user/" + vfv.get_valid_userid(users[0].userid));
                                 loggerLog(req, err, null);
                             }
@@ -510,6 +619,7 @@ router.post("/delete-user", (req, res) => {
                                                 loggerLog(req, err, null);
                                             }
                                             else {
+                                                req.session.successMsg = "User deleted successfully."
                                                 res.redirect("/users");
                                                 loggerLog(req, null, "deleted");
                                             }
@@ -591,9 +701,14 @@ router.get("/question-paper/:Qname", (req, res) => {
                                     loggerLog(req, err, null);
                                 }
                                 else {
+                                    const errorMsg = req.session.errorMsg;
+                                    const successMsg = req.session.successMsg;
+                                    req.session.errorMsg = req.session.successMsg = null;
                                     res.render("edit-question-paper", {
                                         qPaper: qPapers[0],
-                                        aPapers: aPapers
+                                        aPapers: aPapers,
+                                        errorMsg: errorMsg,
+                                        successMsg: successMsg
                                     });
                                     loggerLog(req, null, "sent");
                                 }
@@ -624,8 +739,13 @@ router.get("/question-paper/:Qname", (req, res) => {
 
 router.get("/add-question-paper", (req, res) => {
     if (req.session.user && req.session.user.type == "teacher") {
+        const errorMsg = req.session.errorMsg;
+        const successMsg = req.session.successMsg;
+        req.session.errorMsg = req.session.successMsg = null;
         res.render("add-question-paper", {
-            rgx: rgxub
+            rgx: rgxub,
+            errorMsg: errorMsg,
+            successMsg: successMsg
         });
         loggerLog(req, null, "sent");
     }
@@ -678,6 +798,7 @@ router.post("/add-question-paper", (req, res) => {
                                             loggerLog(req, err, null);
                                         }
                                         else {
+                                            req.session.successMsg = "Question Paper added successfully.";
                                             res.redirect("/question-paper/" + req.body.Qname);
                                             loggerLog(req, null, "submitted successfully");
                                         }
@@ -686,6 +807,7 @@ router.post("/add-question-paper", (req, res) => {
                             });
                         }
                         else {
+                            req.session.errorMsg = "Question Paper with the same name already exists."
                             res.redirect("/add-question-paper");
                             delete_file(req.files.Qfile.tempFilePath);
                             loggerLog(req, null, "already submitted");
@@ -735,12 +857,14 @@ router.post("/edit-question-paper", (req, res) => {
                                             loggerLog(req, err, null);
                                         }
                                         else {
+                                            req.session.successMsg = "Question Paper activated successfully.";
                                             res.redirect("/question-paper/" + qPapers[0].filename);
                                             loggerLog(req, null, "updated");
                                         }
                                     });
                                 }
                                 else {
+                                    req.session.successMsg = "Question Paper deactivated successfully.";
                                     res.redirect("/question-paper/" + qPapers[0].filename);
                                     loggerLog(req, null, "updated");
                                 }
@@ -783,8 +907,13 @@ router.get("/answer-paper/:Aname", (req, res) => {
                     loggerLog(req, err, null);
                 }
                 else if (aPapers[0]) {
+                    const errorMsg = req.session.errorMsg;
+                    const successMsg = req.session.successMsg;
+                    req.session.errorMsg = req.session.successMsg = null;
                     res.render("edit-answer-paper", {
-                        aPaper: aPapers[0]
+                        aPaper: aPapers[0],
+                        errorMsg: errorMsg,
+                        successMsg: successMsg
                     });
                     loggerLog(req, null, "sent");
                 }
@@ -796,7 +925,7 @@ router.get("/answer-paper/:Aname", (req, res) => {
         }
         else {
             res.redirect("/");
-        loggerLog(req, null, "invalid input");
+            loggerLog(req, null, "invalid input");
         }
     }
     else {
@@ -828,6 +957,7 @@ router.post("/edit-answer-paper", (req, res) => {
                             }
                             else if (aPapers[0]) {
                                 db.query(sql.update_answer_papers_table(aPapers[0].question_filename, aPapers[0].userid, req.body.marks), (err, qRes) => {
+                                    req.session.successMsg = "Marks set successfully.";
                                     res.redirect("/answer-paper/" + req.body.Qname + "-ANS-" + vfv.get_valid_userid(req.body.userid));
                                     if (err) loggerLog(req, err, null); else loggerLog(req, null, "updated");
                                 });
@@ -904,9 +1034,14 @@ router.get("/exams", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
+                            const errorMsg = req.session.errorMsg;
+                            const successMsg = req.session.successMsg;
+                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("list-exams", {
                                 qPaper: qPapers[0],
-                                aPaper: aPapers[0]
+                                aPaper: aPapers[0],
+                                errorMsg: errorMsg,
+                                successMsg: successMsg
                             });
                             loggerLog(req, null, "sent");
                         }
@@ -954,6 +1089,7 @@ router.post("/submit-exam", (req, res) => {
                                     loggerLog(req, err, null);
                                 }
                                 else {
+                                    req.session.successMsg = "Answer Paper submitted successfully.";
                                     req.files.Afile.mv(global.__basedir + "/data/answer-papers/" + req.body.Qname + "-ANS-" + req.session.user.userid + ".pdf", (err) => {
                                         res.redirect("/exams");
                                         if (err) {
@@ -968,6 +1104,7 @@ router.post("/submit-exam", (req, res) => {
                             });
                         }
                         else {
+                            req.session.errorMsg = "Answer Paper already submitted.";
                             res.redirect("/exams");
                             delete_file(req.files.Afile.tempFilePath);
                             loggerLog(req, null, "already submitted");

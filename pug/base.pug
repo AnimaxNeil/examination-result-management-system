@@ -14,9 +14,13 @@ html(lang="en")
     body
         - const get_valid_userid = (userid) => { return "II" + (userid + 10000000); }
         
-        if response 
-            div#response
-                span #{response}
+        if errorMsg 
+            div#errorMsg
+                span #{errorMsg}
+                img(src="/static/small-cross.png" alt="close message" width="20")
+        if successMsg 
+            div#successMsg
+                span #{successMsg}
                 img(src="/static/small-cross.png" alt="close message" width="20")
 
         div#page-area
@@ -28,9 +32,14 @@ html(lang="en")
             main
                 block page-main 
 
-        if response 
-            script(src="/static/response-script.js")
+        if errorMsg || successMsg 
+            - const errorMsgRecieved=errorMsg?true:false;
+            - const successMsgRecieved=successMsg?true:false;
+            script(type="text/javascript").
+                window.errorMsgRecieved=#{errorMsgRecieved};
+                window.successMsgRecieved=#{successMsgRecieved};
+            script(src="/static/response-msg.js")
 
         block page-end
-            
+
 
