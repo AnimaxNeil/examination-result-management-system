@@ -14,7 +14,7 @@ block page-main
     if qPaper
         section#edit-question-paper
             h1 Question Paper
-            table 
+            div#table-area: table 
                 tr
                     th Name 
                     td #{qPaper.filename}
@@ -44,7 +44,7 @@ block page-main
         if aPapers
             section#list-unchecked-answer-papers
                 h1 Unchecked Answer Papers 
-                table 
+                div#table-area: table 
                     tr
                         th 
                         th User Id
@@ -65,7 +65,7 @@ block page-main
             hr
             section#list-checked-answer-papers
                 h1 Checked Answer Papers 
-                table 
+                div#table-area: table 
                     tr 
                         th 
                         th User Id

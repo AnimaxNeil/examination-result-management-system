@@ -13,7 +13,7 @@ block page-main
     section#list-exam-papers
         h1 Ongoing Exams
         if qPaper && qPaper.filename
-            table 
+            div#table-area: table 
                 tr 
                     th Paper
                     td #{qPaper.filename}

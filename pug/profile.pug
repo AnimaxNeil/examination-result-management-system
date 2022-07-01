@@ -14,7 +14,7 @@ block page-main
         h1 Profile
         if student
             - student.userid = get_valid_userid(student.userid)
-            table 
+            div#table-area: table 
                 tr 
                     th Type
                     td Student

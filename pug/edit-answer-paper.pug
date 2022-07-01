@@ -17,7 +17,7 @@ block page-main
         h1 Answer Paper 
         if aPaper
             - aPaper.userid = get_valid_userid(aPaper.userid)
-            table 
+            div#table-area: table 
                 tr 
                     th User Id
                     td #{aPaper.userid}
