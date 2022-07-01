@@ -17,6 +17,7 @@ block page-main
             div 
                 label(for="password") Password : 
                 input#password(type="text" name="password" pattern=rgx.password required="required")
+                span ( Between 5 to 10 characters, can include leters, numbers and symbols like _ . - + * # )
             div
                 label(for="type") Type : 
                 select#type(name="type" required="required")
@@ -28,9 +29,11 @@ block page-main
             div 
                 label(for="name") Name : 
                 input#name(type="text" name="name" pattern=rgx.name required="required")
+                span ( Between 1 to 50 characters, can include leters and spaces )
             div 
                 label(for="course") Course : 
                 input#course( type="text" name="course" pattern=rgx.course required="required")
+                span ( Between 1 to 10 characters, can include leters and numbers )
             div 
                 label(for="dob") Date of Birth : 
                 input#dob(type="date" name="dob" required="required")
@@ -40,8 +43,11 @@ block page-main
             div 
                 label(for="phone") Phone : 
                 input#phone(type="text" name="phone" pattern=rgx.phone required="required")
+                span ( Must be a 10 digit number )
             div 
                 label(for="address") Address : 
                 textarea#address(name="address" maxlength="100" rows="8" cols="30")
+                span ( Between 0 to 100 characters )
             div 
                 input(type="submit" value="Add User")
+

@@ -65,6 +65,18 @@ mixin make_singleForm(id)
         input.cancel-btn(hidden="hidden" type="button" value="Cancel")
         input.submit-btn(hidden="hidden" type="submit" value="Save")
 
+        if id=="form-password"
+            span(hidden="hidden") ( Between 5 to 10 characters, can include leters, numbers and symbols like _ . - + * # )
+        else if id=="form-name"
+            span(hidden="hidden") ( Between 1 to 50 characters, can include leters and spaces )
+        else if id=="form-course"
+            span(hidden="hidden") ( Between 1 to 10 characters, can include leters and numbers )
+        else if id=="form-phone"
+            span(hidden="hidden") ( Must be a 10 digit number )
+        else if id=="form-address"
+            span(hidden="hidden") ( Between 0 to 100 characters )
+
+
 block page-main 
     if user && userInfo && rgx 
         - user.userid = get_valid_userid(user.userid)
@@ -92,7 +104,7 @@ block page-end
     if user && userInfo
         script(type="text/javascript").
             window.userValues = {
-                userid: #{user.userid},
+                userid: `#{user.userid}`,
                 password: `#{user.password}`,
                 type: `#{user.type}`,
                 active: #{user.active},

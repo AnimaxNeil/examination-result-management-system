@@ -3,6 +3,7 @@
 const form_password = {
     form: document.getElementById("form-password"),
     inputF: document.getElementById("password"),
+    hint: document.getElementById("form-password").getElementsByTagName("span")[0],
     editBtn: document.getElementById("form-password").getElementsByClassName("edit-btn")[0],
     cancelBtn: document.getElementById("form-password").getElementsByClassName("cancel-btn")[0],
     submitBtn: document.getElementById("form-password").getElementsByClassName("submit-btn")[0]
@@ -24,6 +25,7 @@ const form_active = {
 const form_name = {
     form: document.getElementById("form-name"),
     inputF: document.getElementById("name"),
+    hint: document.getElementById("form-name").getElementsByTagName("span")[0],
     editBtn: document.getElementById("form-name").getElementsByClassName("edit-btn")[0],
     cancelBtn: document.getElementById("form-name").getElementsByClassName("cancel-btn")[0],
     submitBtn: document.getElementById("form-name").getElementsByClassName("submit-btn")[0]
@@ -31,6 +33,7 @@ const form_name = {
 const form_course = {
     form: document.getElementById("form-course"),
     inputF: document.getElementById("course"),
+    hint: document.getElementById("form-course").getElementsByTagName("span")[0],
     editBtn: document.getElementById("form-course").getElementsByClassName("edit-btn")[0],
     cancelBtn: document.getElementById("form-course").getElementsByClassName("cancel-btn")[0],
     submitBtn: document.getElementById("form-course").getElementsByClassName("submit-btn")[0]
@@ -52,6 +55,7 @@ const form_email = {
 const form_phone = {
     form: document.getElementById("form-phone"),
     inputF: document.getElementById("phone"),
+    hint: document.getElementById("form-phone").getElementsByTagName("span")[0],
     editBtn: document.getElementById("form-phone").getElementsByClassName("edit-btn")[0],
     cancelBtn: document.getElementById("form-phone").getElementsByClassName("cancel-btn")[0],
     submitBtn: document.getElementById("form-phone").getElementsByClassName("submit-btn")[0]
@@ -59,6 +63,7 @@ const form_phone = {
 const form_address = {
     form: document.getElementById("form-address"),
     inputF: document.getElementById("address"),
+    hint: document.getElementById("form-address").getElementsByTagName("span")[0],
     editBtn: document.getElementById("form-address").getElementsByClassName("edit-btn")[0],
     cancelBtn: document.getElementById("form-address").getElementsByClassName("cancel-btn")[0],
     submitBtn: document.getElementById("form-address").getElementsByClassName("submit-btn")[0]
@@ -72,12 +77,14 @@ function set_form_to_edit_mode(form_edit) {
             page_forms[i].editBtn.hidden = true;
             page_forms[i].cancelBtn.hidden = false;
             page_forms[i].submitBtn.hidden = false;
+            if (page_forms[i].hint) page_forms[i].hint.hidden = false;
         }
         else {
             page_forms[i].inputF.disabled = true;
             page_forms[i].editBtn.hidden = true;
             page_forms[i].cancelBtn.hidden = true;
             page_forms[i].submitBtn.hidden = true;
+            if (page_forms[i].hint) page_forms[i].hint.hidden = true;
         }
     }
 };

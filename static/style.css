@@ -21,7 +21,7 @@ body {
     border-radius: 8px;
     border-style: solid;
     border-color: #006600;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 header {
@@ -91,7 +91,7 @@ main {
 
 /* #endregion */
 
-/* #region - Common elements */
+/* #region - Button style */
 
 #user-login h1, #user-home h1, #list-users h1, #profile h1, #results h1, #list-students h1,
 #list-active-question-papers h1, #list-inactive-question-papers h1,
@@ -159,46 +159,6 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 /* #endregion */
 
-/* #region - Login */
-
-#user-login form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(100% - 10px);
-    max-width: 400px;
-}
-
-#user-login form label {
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
-#user-login form input {
-    height: 2em;
-    padding: 0 0.5em;
-    width: calc(100% - 1em);
-    margin-bottom: 20px;
-    font-size: 1em;
-}
-
-#user-login form input[type=submit] {
-    max-width: 10em;
-    margin-right: 10%;
-    font-size: 1.1em;
-}
-
-#user-login form a {
-    margin-left: auto;
-    color: #006600;
-}
-
-/* #endregion */
-
 /* #region - Home */
 
 #user-home div {
@@ -222,7 +182,7 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 /* #endregion */
 
-/* #region - Users, Profile, Results, Question Papers, Answer, Exams Papers tables */
+/* #region - Tables */
 
 #list-users table, #profile table, #results table, #list-students table,
 #list-active-question-papers table, #list-inactive-question-papers table, #edit-question-paper table,
@@ -268,25 +228,42 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 /* #endregion */
 
-/* #region - Edit, Add, Delete User, Question Paper, Answer Paper, Exams */
+/* #region - Forms */
 
-#edit-user form, #add-user form div, #add-question-paper form div {
-    margin: 25px 0;
+#user-login form {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 10px);
+    max-width: 400px;
 }
 
-#edit-user form label, #add-user form label, #add-question-paper form label, #list-exam-papers form label {
+#edit-user form, #add-user form div, #add-question-paper form div {
+    margin: 30px 0;
+}
+
+#user-login form div {
+    margin: 10px 0;
+}
+
+#user-login form label, #edit-user form label, #add-user form label, #add-question-paper form label, #list-exam-papers form label {
     font-size: 1.2em;
     margin-right: 10px;
 }
 
-#edit-user form input, #edit-user form select, #delete-user input, #add-user form input, #add-user form select,
+#user-login form input, #edit-user form input, #edit-user form textarea, #edit-user form select, #delete-user input, #add-user form input, #add-user form textarea, #add-user form select,
 #edit-question-paper input, #add-question-paper form input, #edit-answer-paper form input, #list-exam-papers form input {
     height: 2em;
     padding: 0 10px;
     width: calc(90% - 10px);
     max-width: 300px;
     font-size: 1em;
-    margin-bottom: 10px;
+    margin: 5px 0;
+}
+
+#user-login form input {
+    width: calc(100% - 20px);
+    max-width: none;
+    margin-top: 10px;
 }
 
 #edit-user form select, #edit-user form input[type=date], #add-user form select, #add-user form input[type=date],
@@ -305,22 +282,17 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 #edit-user form textarea, #add-user form textarea {
     resize: none;
-    width: 50%;
-    max-width: 300px;
     height: 100px;
-    font-size: 1em;
-    margin-bottom: 10px;
-    padding: 5px 10px;
     vertical-align: middle;
 }
 
 #edit-user form input[type=button], #edit-user form input[type=submit], #delete-user input[type=submit],
 #edit-question-paper input[type=submit], #edit-answer-paper form input[type=submit], #list-exam-papers form input[type=submit] {
     width: 6em;
-    margin-left: 30px;
+    margin: 5px 0 5px 20px;
 }
 
-#add-user form input[type=submit], #delete-user input[type=submit], #edit-question-paper input[type=submit],
+#user-login form input[type=submit], #add-user form input[type=submit], #delete-user input[type=submit], #edit-question-paper input[type=submit],
 #add-question-paper form input[type=submit] {
     font-size: 1.2em;
 }
@@ -329,14 +301,36 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     width: 8em;
 }
 
-/* #endregion */
+#user-login form input[type=submit] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 10em;
+    margin-top: 20px;
+}
 
-/* #region - Add, upload question paper, list exams and others */
+#user-login form span, #add-user form span, #edit-user form span, #add-question-paper form span, #list-exam-papers form span, #edit-answer-paper form span {
+    font-size: 0.8em;
+    color: #006600;
+    margin-left: 20px;
+}
+
+#user-login form span {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#user-login form a {
+    color: #006600;
+    display: block;
+    text-align: right;
+}
 
 #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
     padding: 9px 30px;
     text-align: center;
-    margin-left: 30px;
+    margin: 5px 0 5px 20px;
     font-size: 1.25em;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -350,7 +344,7 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#add-question-paper form input #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
+#edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
     margin-left: 0;
 }
 

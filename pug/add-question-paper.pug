@@ -17,12 +17,15 @@ block page-main
             div 
                 label(for="Qname") Name : 
                 input#qname(type="text" name="Qname" pattern=rgx.Qname required="required")
+                span ( Between 6 to 30 characters, can only include leters, numbers and the symbols _ - )
             div
                 label(for="Qname") Full Marks : 
-                input(required="required" type="number" name="marks" min="0" max="9999") 
+                input(required="required" type="number" name="marks" min="0" max="9999")
+                span ( Must be between 0 to 9999 )
             div
                 label(for="Qfile") Upload File :
                 input#qfile(type="file" name="Qfile" accept=".pdf" required="required")
+                span ( Must be a .pdf file with size less than 3MB )
             div
                 input(type="submit" value="Add this Paper")
     

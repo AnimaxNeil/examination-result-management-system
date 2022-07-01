@@ -1,2 +1,2 @@
-cd F:\\Projects\\WebProjects\\ExaminationResultSystemCC9
+cd F:/Projects/WebProjects/ExaminationResultSystemCC9
 node main.js

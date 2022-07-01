@@ -1,2 +1,7 @@
 /node_modules/
 /.env
+/debug/log/*
+/debug/test/*
+/data/answer-papers/*
+/data/answer-papers/*
+/data/temp/*

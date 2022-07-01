@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // console.debug("DOM start");
     if (window.errorMsgRecieved || window.successMsgRecieved) {
         responseMsg.closeBtn.addEventListener("click", function () { responseMsg.message.style.display = "none"; });
-        setTimeout(function () { responseMsg.message.style.display = "none"; }, 5000);
+        setTimeout(function () { responseMsg.message.style.display = "none"; }, 4000);
     }
     // console.debug("DOM end");
 

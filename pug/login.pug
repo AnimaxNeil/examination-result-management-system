@@ -9,9 +9,15 @@ block page-main
     section#user-login
         h1 Log in
         form(action="/login" method="POST")
-            label(for="userid") User Id :
-            input(required="required" type="text" placeholder="Enter User Id" name="userid" pattern=rgx.userid)
-            label(for="password") Password :
-            input(required="required" type="password" placeholder="Enter Password" name="password" pattern=rgx.password)
-            input(type="submit" value="Log in")
+            div
+                label(for="userid") User Id :
+                input(required="required" type="text" placeholder="Enter User Id" name="userid" pattern=rgx.userid)
+                span ( Example: II10000001 )
+            div
+                label(for="password") Password :
+                input(required="required" type="password" placeholder="Enter Password" name="password" pattern=rgx.password)
+                span ( Example: 12345 )
+            div
+                input(type="submit" value="Log in")
             a(href="/forgot") Forgot credentials?
+

@@ -448,6 +448,10 @@ router.post("/edit-user", (req, res) => {
                                     }
                                 });
                             }
+                            else {
+                                res.redirect("/user/" + vfv.get_valid_userid(users[0].userid));
+                                loggerLog(req, null, "already updated");
+                            }
                         });
                     }
                     else {
