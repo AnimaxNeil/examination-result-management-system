@@ -1,7 +1,6 @@
 # CUSTOM
-custom-modules/
-debug/
-data/
+data
+debug
 
 # Logs
 logs
