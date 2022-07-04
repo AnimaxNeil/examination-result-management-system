@@ -40,16 +40,15 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 
+
 router.get("/", (req, res) => {
     if (req.session.user) {
-        const errorMsg = req.session.errorMsg;
-        const successMsg = req.session.successMsg;
-        req.session.errorMsg = req.session.successMsg = null;
         res.render("home", {
             userType: req.session.user.type,
-            errorMsg: errorMsg,
-            successMsg: successMsg
+            errorMsg: global.errorMsg,
+            successMsg: global.successMsg
         });
+        global.errorMsg = global.successMsg = null;
         loggerLog(req, null, "sent");
     }
     else {
@@ -72,7 +71,7 @@ router.get("/forgot", (req, res) => {
 router.get("/logout", (req, res) => {
     if (req.session.user) {
         req.session.user = null;
-        req.session.successMsg = "Log out successful.";
+        global.successMsg = "Log out successful.";
         res.redirect(global.__baseurl + "/login");
         loggerLog(req, null, "sent");
     }
@@ -125,14 +124,12 @@ router.get("/users", (req, res) => {
                 loggerLog(req, err, null);
             }
             else {
-                const errorMsg = req.session.errorMsg;
-                const successMsg = req.session.successMsg;
-                req.session.errorMsg = req.session.successMsg = null;
                 res.render("list-users", {
                     users: users,
-                    errorMsg: errorMsg,
-                    successMsg: successMsg
+                    errorMsg: global.errorMsg,
+                    successMsg: global.successMsg
                 });
+                global.errorMsg = global.successMsg = null;
                 loggerLog(req, null, "sent");
             }
         });
@@ -159,16 +156,14 @@ router.get("/user/:userid", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
-                            const errorMsg = req.session.errorMsg;
-                            const successMsg = req.session.successMsg;
-                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("edit-user", {
                                 user: users[0],
                                 userInfo: students[0],
                                 rgx: rgxub,
-                                errorMsg: errorMsg,
-                                successMsg: successMsg
+                                errorMsg: global.errorMsg,
+                                successMsg: global.successMsg
                             });
+                            global.errorMsg = global.successMsg = null;
                             loggerLog(req, null, "sent");
                         }
                     });
@@ -180,16 +175,14 @@ router.get("/user/:userid", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
-                            const errorMsg = req.session.errorMsg;
-                            const successMsg = req.session.successMsg;
-                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("edit-user", {
                                 user: users[0],
                                 userInfo: teachers[0],
                                 rgx: rgxub,
-                                errorMsg: errorMsg,
-                                successMsg: successMsg
+                                errorMsg: global.errorMsg,
+                                successMsg: global.successMsg
                             });
+                            global.errorMsg = global.successMsg = null;
                             loggerLog(req, null, "sent");
                         }
                     });
@@ -247,7 +240,7 @@ router.post("/add-user", (req, res) => {
                                 loggerLog(req, err, null);
                             }
                             else {
-                                req.session.successMsg = "User added successfully.";
+                                global.successMsg = "User added successfully.";
                                 res.redirect(global.__baseurl + "/user/" + vfv.get_valid_userid(uRes.insertId));
                                 loggerLog(req, null, "submitted successfully");
                             }
@@ -261,7 +254,7 @@ router.post("/add-user", (req, res) => {
                                 loggerLog(req, err, null);
                             }
                             else {
-                                req.session.successMsg = "User added successfully.";
+                                global.successMsg = "User added successfully.";
                                 res.redirect(global.__baseurl + "/user/" + vfv.get_valid_userid(uRes.insertId));
                                 loggerLog(req, null, "submitted successfully");
                             }
@@ -588,7 +581,7 @@ router.post("/delete-user", (req, res) => {
                                                 loggerLog(req, err, null);
                                             }
                                             else {
-                                                req.session.successMsg = "User deleted successfully.";
+                                                global.successMsg = "User deleted successfully."
                                                 res.redirect(global.__baseurl + "/users");
                                                 loggerLog(req, null, "deleted");
                                             }
@@ -618,7 +611,7 @@ router.post("/delete-user", (req, res) => {
                                                 loggerLog(req, err, null);
                                             }
                                             else {
-                                                req.session.successMsg = "User deleted successfully."
+                                                global.successMsg = "User deleted successfully."
                                                 res.redirect(global.__baseurl + "/users");
                                                 loggerLog(req, null, "deleted");
                                             }
@@ -700,15 +693,13 @@ router.get("/question-paper/:Qname", (req, res) => {
                                     loggerLog(req, err, null);
                                 }
                                 else {
-                                    const errorMsg = req.session.errorMsg;
-                                    const successMsg = req.session.successMsg;
-                                    req.session.errorMsg = req.session.successMsg = null;
                                     res.render("edit-question-paper", {
                                         qPaper: qPapers[0],
                                         aPapers: aPapers,
-                                        errorMsg: errorMsg,
-                                        successMsg: successMsg
+                                        errorMsg: global.errorMsg,
+                                        successMsg: global.successMsg
                                     });
+                                    global.errorMsg = global.successMsg = null;
                                     loggerLog(req, null, "sent");
                                 }
                             });
@@ -738,14 +729,12 @@ router.get("/question-paper/:Qname", (req, res) => {
 
 router.get("/add-question-paper", (req, res) => {
     if (req.session.user && req.session.user.type == "teacher") {
-        const errorMsg = req.session.errorMsg;
-        const successMsg = req.session.successMsg;
-        req.session.errorMsg = req.session.successMsg = null;
         res.render("add-question-paper", {
             rgx: rgxub,
-            errorMsg: errorMsg,
-            successMsg: successMsg
+            errorMsg: global.errorMsg,
+            successMsg: global.successMsg
         });
+        global.errorMsg = global.successMsg = null;
         loggerLog(req, null, "sent");
     }
     else {
@@ -797,7 +786,7 @@ router.post("/add-question-paper", (req, res) => {
                                             loggerLog(req, err, null);
                                         }
                                         else {
-                                            req.session.successMsg = "Question Paper added successfully.";
+                                            global.successMsg = "Question Paper added successfully.";
                                             res.redirect(global.__baseurl + "/question-paper/" + req.body.Qname);
                                             loggerLog(req, null, "submitted successfully");
                                         }
@@ -806,7 +795,7 @@ router.post("/add-question-paper", (req, res) => {
                             });
                         }
                         else {
-                            req.session.errorMsg = "Question Paper with the same name already exists."
+                            global.errorMsg = "Question Paper with the same name already exists."
                             res.redirect(global.__baseurl + "/add-question-paper");
                             delete_file(req.files.Qfile.tempFilePath);
                             loggerLog(req, null, "already submitted");
@@ -856,14 +845,14 @@ router.post("/edit-question-paper", (req, res) => {
                                             loggerLog(req, err, null);
                                         }
                                         else {
-                                            req.session.successMsg = "Question Paper activated successfully.";
+                                            global.successMsg = "Question Paper activated successfully.";
                                             res.redirect(global.__baseurl + "/question-paper/" + qPapers[0].filename);
                                             loggerLog(req, null, "updated");
                                         }
                                     });
                                 }
                                 else {
-                                    req.session.successMsg = "Question Paper deactivated successfully.";
+                                    global.successMsg = "Question Paper deactivated successfully.";
                                     res.redirect(global.__baseurl + "/question-paper/" + qPapers[0].filename);
                                     loggerLog(req, null, "updated");
                                 }
@@ -906,14 +895,12 @@ router.get("/answer-paper/:Aname", (req, res) => {
                     loggerLog(req, err, null);
                 }
                 else if (aPapers[0]) {
-                    const errorMsg = req.session.errorMsg;
-                    const successMsg = req.session.successMsg;
-                    req.session.errorMsg = req.session.successMsg = null;
                     res.render("edit-answer-paper", {
                         aPaper: aPapers[0],
-                        errorMsg: errorMsg,
-                        successMsg: successMsg
+                        errorMsg: global.errorMsg,
+                        successMsg: global.successMsg
                     });
+                    global.errorMsg = global.successMsg = null;
                     loggerLog(req, null, "sent");
                 }
                 else {
@@ -956,7 +943,7 @@ router.post("/edit-answer-paper", (req, res) => {
                             }
                             else if (aPapers[0]) {
                                 db.query(sql.update_answer_papers_table(aPapers[0].question_filename, aPapers[0].userid, req.body.marks), (err, qRes) => {
-                                    req.session.successMsg = "Marks set successfully.";
+                                    global.successMsg = "Marks set successfully.";
                                     res.redirect(global.__baseurl + "/answer-paper/" + req.body.Qname + "-ANS-" + vfv.get_valid_userid(req.body.userid));
                                     if (err) loggerLog(req, err, null); else loggerLog(req, null, "updated");
                                 });
@@ -1033,15 +1020,13 @@ router.get("/exams", (req, res) => {
                             loggerLog(req, err, null);
                         }
                         else {
-                            const errorMsg = req.session.errorMsg;
-                            const successMsg = req.session.successMsg;
-                            req.session.errorMsg = req.session.successMsg = null;
                             res.render("list-exams", {
                                 qPaper: qPapers[0],
                                 aPaper: aPapers[0],
-                                errorMsg: errorMsg,
-                                successMsg: successMsg
+                                errorMsg: global.errorMsg,
+                                successMsg: global.successMsg
                             });
+                            global.errorMsg = global.successMsg = null;
                             loggerLog(req, null, "sent");
                         }
                     });
@@ -1088,7 +1073,7 @@ router.post("/submit-exam", (req, res) => {
                                     loggerLog(req, err, null);
                                 }
                                 else {
-                                    req.session.successMsg = "Answer Paper submitted successfully.";
+                                    global.successMsg = "Answer Paper submitted successfully.";
                                     req.files.Afile.mv(global.__basedir + "/data/answer-papers/" + req.body.Qname + "-ANS-" + req.session.user.userid + ".pdf", (err) => {
                                         res.redirect(global.__baseurl + "/exams");
                                         if (err) {
@@ -1103,7 +1088,7 @@ router.post("/submit-exam", (req, res) => {
                             });
                         }
                         else {
-                            req.session.errorMsg = "Answer Paper already submitted.";
+                            global.errorMsg = "Answer Paper already submitted.";
                             res.redirect(global.__baseurl + "/exams");
                             delete_file(req.files.Afile.tempFilePath);
                             loggerLog(req, null, "already submitted");

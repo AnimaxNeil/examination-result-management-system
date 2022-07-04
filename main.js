@@ -1,7 +1,8 @@
-// examination-result-system-cc9
+// examination-result-management-system
 
 // initializing base variables
 global.__basedir = __dirname;
+global.errorMsg = global.successMsg = null;
 require("dotenv").config();
 
 // need for working with Phusion Passenger (shared hosting)
@@ -22,7 +23,7 @@ const session = require("express-session");
 const mysqlStore = require('express-mysql-session')(session);
 const sessionStore = new mysqlStore({}, db);
 app.use(session({
-    key: process.env.SESSION_NAME,
+    name: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
     cookie: {

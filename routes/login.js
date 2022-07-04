@@ -32,14 +32,12 @@ router.get("/", (req, res) => {
         loggerLog(req, null, "permission denied");
     }
     else {
-        const errorMsg = req.session.errorMsg;
-        const successMsg = req.session.successMsg;
-        req.session.errorMsg = req.session.successMsg = null;
         res.render("login", {
             rgx: rgxub,
-            errorMsg: errorMsg,
-            successMsg: successMsg
+            errorMsg: global.errorMsg,
+            successMsg: global.successMsg
         });
+        global.errorMsg = global.successMsg = null;
         loggerLog(req, null, "sent");
     }
 });
@@ -56,12 +54,12 @@ const authenticate_user = (req, res) => {
                 userid: users[0].userid,
                 type: users[0].type,
             });
-            req.session.successMsg = "Login successfull.";
+            global.successMsg = "Login successful.";
             res.redirect(global.__baseurl + "/");
-            loggerLog(req, null, "login successfull, userid:" + req.body.userid);
+            loggerLog(req, null, "login successful, userid:" + req.body.userid);
         }
         else {
-            req.session.errorMsg = "Login failed. Incorrect credentials or the associated user account is inactive.";
+            global.errorMsg = "Login failed. Incorrect credentials or the associated user account is inactive.";
             res.redirect(global.__baseurl + "/login");
             loggerLog(req, null, "login failed, userid:" + req.body.userid);
         }
@@ -83,3 +81,4 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
+
