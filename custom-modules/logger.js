@@ -15,11 +15,11 @@ const logger = {
         let message = " |=user> ";
         if (user) {
             const v_userid = user.userid.toString();
-            if (v_userid.substring(0, 2) == "II") user.userid = (parseInt(v_userid.substring(2, v_userid.length)) - 10000000);
+            if (v_userid.slice(0, 2) == "II") user.userid = (parseInt(v_userid.slice(2)) - 10000000);
         }
         message += user ? user.userid + "(" + user.type + ")" : "(null)";
-        if (get) message += " |=get> " + get;
-        if (post) message += " |=post> " + post;
+        if (get) message += " |=get> " + get.slice(global.__baseurl.length);
+        if (post) message += " |=post> " + post.slice(global.__baseurl.length);
         if (info) message += " |=info> " + info;
         if (error) message += " |=error> " + error;
         message += "\n";

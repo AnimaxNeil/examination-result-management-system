@@ -17,9 +17,6 @@ const loggerLog = (req, err, info) => {
 
 // database connection
 const db = require(global.__basedir + "/custom-modules/database");
-db.connect((err) => {
-    logger.writeToFile("info", logger.getFormattedMessage({ info: "db connection", error: err }));
-});
 // formatted sql querries
 const sql = require(global.__basedir + "/custom-modules/sql-commands");
 
@@ -31,7 +28,7 @@ let rgxub = require(global.__basedir + "/custom-modules/regex-unbounded");
 
 router.get("/", (req, res) => {
     if (req.session.user) {
-        res.redirect("/");
+        res.redirect(global.__baseurl + "/");
         loggerLog(req, null, "permission denied");
     }
     else {
@@ -51,7 +48,7 @@ const authenticate_user = (req, res) => {
     req.body.userid = vfv.get_real_userid(req.body.userid);
     db.query(sql.get_users_with_id_password(req.body.userid, req.body.password), (err, users) => {
         if (err) {
-            res.redirect("/login");
+            res.redirect(global.__baseurl + "/login");
             loggerLog(req, err, null);
         }
         else if (users[0] && users[0].active != 0) {
@@ -59,13 +56,13 @@ const authenticate_user = (req, res) => {
                 userid: users[0].userid,
                 type: users[0].type,
             });
-            req.session.successMsg = "Login successfull. User Id: " + req.session.user.userid;
-            res.redirect("/");
+            req.session.successMsg = "Login successfull.";
+            res.redirect(global.__baseurl + "/");
             loggerLog(req, null, "login successfull, userid:" + req.body.userid);
         }
         else {
             req.session.errorMsg = "Login failed. Incorrect credentials or the associated user account is inactive.";
-            res.redirect("/login");
+            res.redirect(global.__baseurl + "/login");
             loggerLog(req, null, "login failed, userid:" + req.body.userid);
         }
     });
@@ -73,14 +70,14 @@ const authenticate_user = (req, res) => {
 
 router.post("/", (req, res) => {
     if (req.session.user) {
-        res.redirect("/");
+        res.redirect(global.__baseurl + "/");
         loggerLog(req, null, "already logged in, userid:" + req.session.user.userid);
     }
     else if (req.body.userid && req.body.password && vfv.verify_userid(req.body.userid)) {
         authenticate_user(req, res);
     }
     else {
-        res.redirect("/login");
+        res.redirect(global.__baseurl + "/login");
         loggerLog(req, null, "invalid input");
     }
 });

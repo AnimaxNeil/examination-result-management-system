@@ -11,7 +11,7 @@ const verify_values = {
     },
     get_real_userid: (userid) => {
         const v_userid = userid.toString();
-        return parseInt(v_userid.substring(2, v_userid.length)) - 10000000;
+        return parseInt(v_userid.slice(2)) - 10000000;
     },
     verify_password: (password) => {
         return password && rgx.password.test(password) == true;

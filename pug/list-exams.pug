@@ -6,8 +6,8 @@ block page-head
     title Exams 
 
 block page-header 
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 block page-main 
     section#list-exam-papers
@@ -26,12 +26,12 @@ block page-main
                 tr 
                     th Date
                     td #{qPaper.modified_date} 
-            a(href="/download/question-paper/"+qPaper.filename) Download
+            a(href=base_url+"/download/question-paper/"+qPaper.filename) Download
             if aPaper && aPaper.userid
                 - aPaper.userid = get_valid_userid(aPaper.userid)
-                a(href="/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Submitted on #{aPaper.submit_date}
+                a(href=base_url+"/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Submitted on #{aPaper.submit_date}
             else 
-                form(action="/submit-exam" method="POST" enctype="multipart/form-data")
+                form(action=domain_url+base_url+"/submit-exam" method="POST" enctype="multipart/form-data")
                     input(type="hidden" name="Qname" value=qPaper.filename)
                     label(for="Afile") Upload File :
                     input#qfile(type="file" name="Afile" accept=".pdf" required="required")

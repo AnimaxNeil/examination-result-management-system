@@ -6,11 +6,11 @@ block page-head
     title Results 
 
 block page-header 
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 block page-main 
-    section#results
+    section#list-results
         h1 Results
         if results 
             div#table-area: table 

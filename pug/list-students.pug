@@ -6,8 +6,8 @@ block page-head
     title Students
 
 block page-header 
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 block page-main 
     section#list-students
@@ -31,8 +31,7 @@ block page-main
                         td #{slno}
                         td #{student.userid}
                         td #{student.name}
-                        - let course=student.course.toUpperCase()
-                        td #{course}
+                        td #{student.course}
                         td #{student.dob}
                         td #{student.email} 
                         td #{student.phone} 

@@ -6,15 +6,15 @@ block page-head
     title Profile
 
 block page-header 
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 block page-main 
     section#profile
         h1 Profile
-        if student
-            - student.userid = get_valid_userid(student.userid)
-            div#table-area: table 
+        div#table-area: table
+            if student
+                - student.userid = get_valid_userid(student.userid) 
                 tr 
                     th Type
                     td Student
@@ -40,9 +40,8 @@ block page-main
                     th Address
                     td #{student.address}
                 tr
-        else if teacher
-            - teacher.userid = get_valid_userid(teacher.userid)
-            table 
+            else if teacher
+                - teacher.userid = get_valid_userid(teacher.userid)
                 tr 
                     th Type
                     td Teacher
@@ -68,7 +67,7 @@ block page-main
                     th Address
                     td #{teacher.address}
                 tr
-        else
-            span Profile not found
+            else
+                span Profile not found
 
     

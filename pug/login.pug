@@ -8,7 +8,7 @@ block page-head
 block page-main 
     section#user-login
         h1 Log in
-        form(action="/login" method="POST")
+        form(action=domain_url+base_url+"/login" method="POST")
             div
                 label(for="userid") User Id :
                 input(required="required" type="text" placeholder="Enter User Id" name="userid" pattern=rgx.userid)
@@ -19,5 +19,5 @@ block page-main
                 span ( Example: 12345 )
             div
                 input(type="submit" value="Log in")
-            a(href="/forgot") Forgot credentials?
+            a(href=base_url+"/forgot") Forgot credentials?
 

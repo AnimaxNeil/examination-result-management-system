@@ -6,12 +6,12 @@ block page-head
     title User Details
 
 block page-header
-    a#back(href="/users") Go Back
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#back(href=base_url+"/users") Go Back
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 mixin make_singleForm(id)
-    form(id=id action="/edit-user", method="POST") 
+    form(id=id action=domain_url+base_url+"/edit-user", method="POST") 
         input(type="hidden" name="userid" value=user.userid)
 
         if id=="form-password"
@@ -93,7 +93,7 @@ block page-main
             +make_singleForm("form-address")
         hr
         section#delete-user
-            form#form-delete(action="/delete-user" method="POST") 
+            form#form-delete(action=domain_url+base_url+"/delete-user" method="POST") 
                 h1 Delete this User ?
                 input(type="hidden" name="userid" value=user.userid)
                 input(type="submit" value="Delete")
@@ -116,6 +116,6 @@ block page-end
                 address: `#{userInfo.address}`
             };
     if user && userInfo
-        script(src="/static/edit-user.js") 
+        script(src=base_url+"/static/edit-user.js") 
 
         

@@ -6,9 +6,9 @@ block page-head
     title View Question Paper
 
 block page-header
-    a#back(href="/question-papers") Go Back
-    a#home(href="/") Home
-    a#logout(href="/logout") Log Out
+    a#back(href=base_url+"/question-papers") Go Back
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
 
 block page-main 
     if qPaper
@@ -31,8 +31,8 @@ block page-main
                     th Active
                     - const active=qPaper.active==1?"Yes":"No"
                     td #{active}
-            form(id=id action="/edit-question-paper", method="POST")
-                a(href="/download/question-paper/"+qPaper.filename) Download
+            form(id=id action=domain_url+base_url+"/edit-question-paper", method="POST")
+                a(href=base_url+"/download/question-paper/"+qPaper.filename) Download
                 input(type="hidden" name="Qname" value=qPaper.filename)
                 if qPaper.active==0
                     input(type="hidden" name="activate" value="true")
@@ -61,7 +61,7 @@ block page-main
                                 td #{aPaper.userid} 
                                 td #{aPaper.submit_date} 
                                 td Unset
-                                td: a(href="/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
+                                td: a(href=base_url+"/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
             hr
             section#list-checked-answer-papers
                 h1 Checked Answer Papers 
@@ -82,5 +82,5 @@ block page-main
                                 td #{aPaper.userid} 
                                 td #{aPaper.submit_date} 
                                 td #{aPaper.marks}
-                                td: a(href="/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
+                                td: a(href=base_url+"/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) View
             hr

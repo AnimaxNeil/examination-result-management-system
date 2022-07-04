@@ -92,9 +92,9 @@ main {
 
 /* #endregion */
 
-/* #region - Button style */
+/* #region - Headings and Buttons */
 
-#user-login h1, #user-home h1, #list-users h1, #profile h1, #results h1, #list-students h1,
+#user-login h1, #user-home h1, #list-users h1, #profile h1, #list-results h1, #list-students h1,
 #list-active-question-papers h1, #list-inactive-question-papers h1,
 #edit-question-paper h1, #list-unchecked-answer-papers h1, #list-checked-answer-papers h1, #edit-answer-paper h1,
 #list-exam-papers h1 {
@@ -103,7 +103,7 @@ main {
     font-size: 1.8em;
 }
 
-#edit-user h1, #list-users h1, #add-question-paper h1 {
+#edit-user h1, #add-question-paper h1 {
     font-size: 1.5em;
 }
 
@@ -172,7 +172,7 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 #user-home div a {
     font-size: 1.5em;
     padding: 10px 20px;
-    margin: 20px 0px;
+    margin: 15px;
     text-decoration: none;
     border-style: double;
     border-width: 4px;
@@ -189,7 +189,7 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     overflow-x: scroll;
 }
 
-#list-users table, #profile table, #results table, #list-students table,
+#list-users table, #profile table, #list-results table, #list-students table,
 #list-active-question-papers table, #list-inactive-question-papers table, #edit-question-paper table,
 #list-unchecked-answer-papers table, #list-checked-answer-papers table, #edit-answer-paper table, #list-exam-papers table {
     border-collapse: collapse;
@@ -200,7 +200,7 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 #list-users table td, #list-users table th,
 #profile table td, #profile table th,
-#results table td, #results table th,
+#list-results table td, #list-results table th,
 #list-students table td, #list-students table th,
 #list-active-question-papers table td, #list-active-question-papers table th,
 #list-inactive-question-papers table td, #list-inactive-question-papers table th,
@@ -215,14 +215,14 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     padding: 10px;
 }
 
-#list-users table th, #profile table th, #results table th, #list-students table th,
+#list-users table th, #profile table th, #list-results table th, #list-students table th,
 #list-active-question-papers table th, #list-inactive-question-papers table th,
 #edit-question-paper th, #list-unchecked-answer-papers table th, #list-checked-answer-papers table th,
 #edit-answer-paper table th, #list-exam-papers table th {
     background-color: #ffffcc;
 }
 
-#profile table, #edit-question-paper, #edit-answer-paper, #list-exam-papers {
+#profile table, #edit-question-paper table, #edit-answer-paper table, #list-exam-papers table {
     font-size: 1.2em;
 }
 
@@ -322,15 +322,16 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 #user-login form span {
     display: block;
-    text-align: center;
-    margin-top: 5px;
+    text-align: right;
+    margin-top: 2px;
 }
 
 #user-login form a {
-    display: inline-block;
     color: #006600;
     display: block;
-    text-align: right;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 20px;
 }
 
 #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
