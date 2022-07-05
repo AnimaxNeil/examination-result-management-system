@@ -40,7 +40,6 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 
-
 router.get("/", (req, res) => {
     if (req.session.user) {
         res.render("home", {

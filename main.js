@@ -20,21 +20,24 @@ app.set("views", global.__basedir + "/pug");
 const db = require(global.__basedir + "/custom-modules/database-promise");
 // for maintaining session information like logged in user
 const session = require("express-session");
-const mysqlStore = require('express-mysql-session')(session);
+const mysqlStore = require("express-mysql-session")(session);
 const sessionStore = new mysqlStore({}, db);
 app.use(session({
-    name: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
     cookie: {
-        maxAge: 24 * 60 * 1000,
-        secure: process.env.NODE_ENV == "production",
+        maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: true
+        sameSite: true,
+        resave: false,
+        proxy: process.env.NODE_ENV == "production",
+        secureProxy: process.env.NODE_ENV == "production",
+        secure: process.env.NODE_ENV == "production",
     },
     resave: false,
     saveUninitialized: false,
 }));
+app.set("trust proxy", 1);
 
 // file handling
 const fs = require("fs");
