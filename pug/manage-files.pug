@@ -1,0 +1,18 @@
+//- manage files page
+
+extends base.pug
+
+block page-head 
+    title Manage Files
+
+block page-header
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
+
+block page-main 
+    section#manage-files
+        h1 Manage Files
+        div
+            a(href=base_url+"/manage-files/question-papers") Question Papers
+            a(href=base_url+"/manage-files/answer-papers") Answer Papers
+

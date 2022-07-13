@@ -90,14 +90,31 @@ main {
     float: right;
 }
 
+hr {
+    color: #006600;
+}
+
+input, select, #errorMsg img, #successMsg img {
+    cursor: pointer;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number] {
+    cursor: text;
+}
+
+input:disabled, select:disabled {
+    cursor: not-allowed;
+    user-select: none;
+}
+
 /* #endregion */
 
 /* #region - Headings and Buttons */
 
 #user-login h1, #user-home h1, #list-users h1, #profile h1, #list-results h1, #list-students h1,
-#list-active-question-papers h1, #list-inactive-question-papers h1,
-#edit-question-paper h1, #list-unchecked-answer-papers h1, #list-checked-answer-papers h1, #edit-answer-paper h1,
-#list-exam-papers h1 {
+#list-active-question-papers h1, #list-inactive-question-papers h1, #edit-question-paper h1,
+#list-unchecked-answer-papers h1, #list-checked-answer-papers h1, #edit-answer-paper h1, #list-exam-papers h1,
+#manage-files h1, #manage-list-question-papers h1, #manage-list-answer-papers h1 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.8em;
@@ -116,13 +133,8 @@ main {
     margin-top: 40px;
 }
 
-hr {
-    color: #006600;
-}
-
 input[type=submit], input[type=button], #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a,
-#user-home div a, #back, #home, #logout, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
-#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+#user-home div a, #manage-files div a, #back, #home, #logout, #table-area table a {
     border-style: solid;
     border-width: 1px;
     border-radius: 8px;
@@ -151,8 +163,7 @@ input[type=submit][value="Delete"], input[type=submit][value="De-Activate"], #lo
 }
 
 input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a,
-#user-home div a, #back, #home, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
-#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+#user-home div a, #manage-files div a, #back, #home, #table-area table a {
     color: #ffffff;
     border-color: #333388;
     background-color: #5555ff;
@@ -160,16 +171,16 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 /* #endregion */
 
-/* #region - Home */
+/* #region - Page selection menus */
 
-#user-home div {
+#user-home div, #manage-files div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-#user-home div a {
+#user-home div a, #manage-files div a {
     font-size: 1.5em;
     padding: 10px 20px;
     margin: 15px;
@@ -189,36 +200,21 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     overflow-x: scroll;
 }
 
-#list-users table, #profile table, #list-results table, #list-students table,
-#list-active-question-papers table, #list-inactive-question-papers table, #edit-question-paper table,
-#list-unchecked-answer-papers table, #list-checked-answer-papers table, #edit-answer-paper table, #list-exam-papers table {
+#table-area table {
     border-collapse: collapse;
     width: 100%;
-    font-size: 1em;
+    font-size: 1rem;
     text-align: center;
 }
 
-#list-users table td, #list-users table th,
-#profile table td, #profile table th,
-#list-results table td, #list-results table th,
-#list-students table td, #list-students table th,
-#list-active-question-papers table td, #list-active-question-papers table th,
-#list-inactive-question-papers table td, #list-inactive-question-papers table th,
-#edit-question-paper td, #edit-question-paper th,
-#list-unchecked-answer-papers table td, #list-unchecked-answer-papers table th,
-#list-checked-answer-papers table td, #list-checked-answer-papers table th,
-#edit-answer-paper table td, #edit-answer-paper table th,
-#list-exam-papers table td, #list-exam-papers th {
+#table-area table th, #table-area table td {
     border-width: 1px;
     border-style: solid;
     border-color: #006600;
     padding: 10px;
 }
 
-#list-users table th, #profile table th, #list-results table th, #list-students table th,
-#list-active-question-papers table th, #list-inactive-question-papers table th,
-#edit-question-paper th, #list-unchecked-answer-papers table th, #list-checked-answer-papers table th,
-#edit-answer-paper table th, #list-exam-papers table th {
+#table-area table th {
     background-color: #ffffcc;
 }
 
@@ -229,6 +225,10 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 #list-active-question-papers #table-area, #list-inactive-question-papers #table-area, #edit-question-paper form,
 #list-unchecked-answer-papers #table-area, #list-checked-answer-papers #table-area {
     margin-bottom: 40px;
+}
+
+#table-area table a, #table-area table form input {
+    font-size: 1rem;
 }
 
 /* #endregion */
@@ -250,18 +250,20 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
     margin: 10px 0;
 }
 
-#user-login form label, #edit-user form label, #add-user form label, #add-question-paper form label, #list-exam-papers form label {
+#user-login form label, #edit-user form label, #add-user form label, #add-question-paper form label, #list-exam-papers form label,
+#edit-answer-paper form label {
     font-size: 1.2em;
     margin-right: 10px;
 }
 
-#user-login form input, #edit-user form input, #edit-user form textarea, #edit-user form select, #delete-user input, #add-user form input, #add-user form textarea, #add-user form select,
-#edit-question-paper input, #add-question-paper form input, #edit-answer-paper form input, #list-exam-papers form input {
+#user-login form input, #edit-user form input, #edit-user form textarea, #edit-user form select, #delete-user input,
+#add-user form input, #add-user form textarea, #add-user form select, #edit-question-paper input, #add-question-paper form input,
+#edit-answer-paper form input, #list-exam-papers form input {
     height: 2em;
     padding: 0 10px;
     width: calc(90% - 10px);
     max-width: 300px;
-    font-size: 1em;
+    font-size: 1rem;
     margin: 5px 0;
 }
 
@@ -336,16 +338,15 @@ input[type=submit][value="Log in"], #add-question-paper-option a, #edit-question
 
 #add-question-paper-option a, #edit-question-paper form a, #edit-answer-paper a, #list-exam-papers a {
     display: inline-block;
-    padding: 9px 30px;
+    padding: 8px 30px;
     text-align: center;
     margin: 5px 0 5px 20px;
-    font-size: 1.25em;
+    font-size: 1.2em;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#back, #home, #logout, #list-users table a, #list-active-question-papers table a, #list-inactive-question-papers table a,
-#list-unchecked-answer-papers table a, #list-checked-answer-papers table a {
+#back, #home, #logout, #table-area table a, #table-area table form input {
     display: inline-block;
     padding: 5px 8px;
     text-align: center;

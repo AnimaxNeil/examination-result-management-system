@@ -1,0 +1,43 @@
+//- manage files answer papers list
+
+extends base.pug
+
+block page-head 
+    title Manage Files - Answer Papers
+
+block page-header 
+    a#back(href=base_url+"/manage-files") Go Back
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
+
+block page-main 
+    section#manage-list-answer-papers
+        h1 Manage Files - Answer Papers
+        if aPapers
+            div#table-area: table 
+                tr 
+                    th
+                    th Paper
+                    th User Id
+                    th Submission Date
+                    th Marks Obtained
+                    th Link
+                    th Delete
+                - let slno=0
+                each aPaper in aPapers 
+                    - slno++
+                    - aPaper.userid = get_valid_userid(aPaper.userid)
+                    tr 
+                        td #{slno}
+                        td #{aPaper.question_filename}
+                        td #{aPaper.userid}
+                        td #{aPaper.submit_date}
+                        - const marks = aPaper.marks || aPaper.marks == 0 ? aPaper.marks : "Unset"
+                        td #{marks}
+                        td: a(href=base_url+"/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Download
+                        td
+                            form#form-delete(action=domain_url+base_url+"/manage-files/delete-answer-paper" method="POST")
+                                input(type="hidden" name="Qname" value=aPaper.question_filename)
+                                input(type="hidden" name="userid" value=aPaper.userid)
+                                input(type="submit" value="Delete")
+            

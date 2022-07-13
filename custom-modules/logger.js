@@ -29,6 +29,15 @@ const logger = {
         message = "[" + logger.getCurrentTime() + "]" + "(" + level + ")+" + message;
         fs.writeFile(global.__basedir + "/debug/log/log-" + logger.getCurrentDate() + ".txt", message, { flag: "a+" }, err => { });
     },
+    quickLog: (req, err, info) => {
+        const level = err ? "error" : "info";
+        if (!req)
+            logger.writeToFile(level, logger.getFormattedMessage({ info: info, error: err }));
+        else if (req.method == "GET")
+            logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, get: req.originalUrl, info: info, error: err }));
+        else if (req.method == "POST")
+            logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, post: req.originalUrl, info: info, error: err }));
+    }
 };
 
 module.exports = logger;

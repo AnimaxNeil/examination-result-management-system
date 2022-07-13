@@ -54,6 +54,12 @@ app.use(global.__baseurl + "/", require(global.__basedir + "/routes/home"));
 // to handle login page requests
 app.use(global.__baseurl + "/login", require(global.__basedir + "/routes/login"));
 
+// to handle download requests
+app.use(global.__baseurl + "/download", require(global.__basedir + "/routes/download"));
+
+// to handle manage files requests
+app.use(global.__baseurl + "/manage-files", require(global.__basedir + "/routes/manage-files"));
+
 // simple test url
 app.get(global.__baseurl + "/ok", (req, res) => {
     res.send("Website is working OK");

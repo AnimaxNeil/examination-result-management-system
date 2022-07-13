@@ -113,7 +113,7 @@ const sql_commands = {
         return `delete from question_papers where filename = "${filename}";`;
     },
     get_all_question_papers:
-        `select * from question_papers order by  course order by modifed_date desc, course;`,
+        `select * from question_papers order by modified_date desc, course;`,
     get_all_question_papers_with_course: (course) => {
         return `select * from question_papers where course = "${course}" order by modified_date desc;`
     },
@@ -147,11 +147,10 @@ const sql_commands = {
     );`,
     drop_answer_papers_table:
         `drop table if exists answer_papers;`,
-    delete_all_answer_papers_with_id: (userid) => {
-        return `delete from answer_papers where userid = ${userid};`;
-    },
-    delete_all_answer_papers_with_Qname: (question_filename) => {
-        return `delete from answer_papers where question_filename = "${question_filename}";`;
+    delete_all_answer_papers:
+        `delete from answer_papers;`,
+    delete_answer_papers_with_Qname_id: (question_filename, userid) => {
+        return `delete from answer_papers where question_filename = "${question_filename}" and userid = ${userid};`;
     },
     get_all_answer_papers:
         `select * from answer_papers order by submit_date desc, userid;`,
@@ -162,17 +161,17 @@ const sql_commands = {
         return `select * from asnainmiamxe_snheeiel where course = "${course}" order by userid;`;
     },
     get_all_answer_papers_with_id: (userid) => {
-        return `select * from answer_papers where userid = "${userid} order by submit_date desc";`
+        return `select * from answer_papers where userid = ${userid} order by submit_date desc;`
     },
     get_answer_papers_with_Qname_id: (question_filename, userid) => {
-        return `select * from answer_papers where question_filename = "${question_filename}" and userid = "${userid}";`
+        return `select * from answer_papers where question_filename = "${question_filename}" and userid = ${userid};`
     },
     insert_answer_papers_table: (question_filename, userid) => {
         return `insert into answer_papers ( question_filename, userid, submit_date ) 
-        values ( "${question_filename}", "${userid}", current_date );`
+        values ( "${question_filename}", ${userid}, current_date );`
     },
     update_answer_papers_table: (question_filename, userid, marks) => {
-        return `update answer_papers set marks = ${marks} where question_filename = "${question_filename}" and userid = "${userid}";`
+        return `update answer_papers set marks = ${marks} where question_filename = "${question_filename}" and userid = ${userid};`
     },
     get_all_results_with_id: (userid) => {
         return `select question_filename, answer_papers.marks as marks_obtained, submit_date, course, question_papers.marks as full_marks from answer_papers, question_papers where answer_papers.userid = ${userid} and answer_papers.marks is not null and question_filename = filename order by submit_date desc;`

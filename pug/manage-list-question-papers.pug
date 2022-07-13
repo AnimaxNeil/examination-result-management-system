@@ -1,0 +1,41 @@
+//- manage files question papers list
+
+extends base.pug
+
+block page-head 
+    title Manage Files - Question Papers
+
+block page-header 
+    a#back(href=base_url+"/manage-files") Go Back
+    a#home(href=base_url+"/") Home
+    a#logout(href=base_url+"/logout") Log Out
+
+block page-main 
+    section#manage-list-question-papers
+        h1 Manage Files - Question Papers
+        if qPapers
+            div#table-area: table 
+                tr 
+                    th 
+                    th Name
+                    th Course
+                    th Modified Date
+                    th Active 
+                    th Link
+                    th Delete
+                - let slno=0
+                each qPaper in qPapers 
+                    - slno++
+                    tr 
+                        td #{slno}
+                        td #{qPaper.filename}
+                        td #{qPaper.course}
+                        td #{qPaper.modified_date}
+                        - const active=qPaper.active==1?"Yes":"No"
+                        td #{active}
+                        td: a(href=base_url+"/download/question-paper/"+qPaper.filename) Download
+                        td
+                            form#form-delete(action=domain_url+base_url+"/manage-files/delete-question-paper" method="POST")
+                                input(type="hidden" name="Qname" value=qPaper.filename)
+                                input(type="submit" value="Delete")
+            
