@@ -23,19 +23,20 @@ const session = require("express-session");
 const mysqlStore = require("express-mysql-session")(session);
 const sessionStore = new mysqlStore({}, db);
 app.use(session({
+    key: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-        maxAge: 24 * 60 * 60 * 1000,
+        maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
         sameSite: true,
         resave: false,
-        proxy: process.env.NODE_ENV == "production",
+        proxy: true,
         secureProxy: process.env.NODE_ENV == "production",
         secure: process.env.NODE_ENV == "production",
     },
-    resave: false,
-    saveUninitialized: false,
 }));
 app.set("trust proxy", 1);
 

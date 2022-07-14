@@ -61,7 +61,7 @@ router.get("/forgot", (req, res) => {
 
 router.get("/logout", (req, res) => {
     if (req.session.user) {
-        req.session.user = null;
+        req.session.destroy();
         global.successMsg = "Log out successful.";
         res.redirect(global.__baseurl + "/login");
         logger.quickLog(req, null, "sent");

@@ -40,7 +40,9 @@ router.get("/question-papers", (req, res) => {
             }
             else {
                 res.render("manage-list-question-papers", {
-                    qPapers: qPapers
+                    qPapers: qPapers,
+                    errorMsg: global.errorMsg,
+                    successMsg: global.successMsg
                 });
                 global.errorMsg = global.successMsg = null;
                 logger.quickLog(req, null, "sent");
@@ -62,7 +64,9 @@ router.get("/answer-papers", (req, res) => {
             }
             else {
                 res.render("manage-list-answer-papers", {
-                    aPapers: aPapers
+                    aPapers: aPapers,
+                    errorMsg: global.errorMsg,
+                    successMsg: global.successMsg
                 });
                 global.errorMsg = global.successMsg = null;
                 logger.quickLog(req, null, "sent");
