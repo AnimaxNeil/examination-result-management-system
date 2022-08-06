@@ -8,9 +8,9 @@ block page-head
 block page-header 
     header 
         if aPaper
-            a#back(href=base_url+"/question-paper/"+aPaper.question_filename) Go Back
-        a#home(href=base_url+"/") Home
-        a#logout(href=base_url+"/logout") Log Out
+            a#back(href=base_url+"question-paper/"+aPaper.question_filename) Go Back
+        a#home(href=base_url) Home
+        a#logout(href=base_url+"logout") Log Out
         
 block page-main 
     section#edit-answer-paper
@@ -31,8 +31,8 @@ block page-main
                     th Marks Obtained
                     - const marks = aPaper.marks || aPaper.marks == 0 ? aPaper.marks : "Unset"
                     td #{marks}
-            a(href=base_url+"/download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Download
-            form(action=domain_url+base_url+"/edit-answer-paper", method="POST")
+            a(href=base_url+"download/answer-paper/"+aPaper.question_filename+"-ANS-"+aPaper.userid) Download
+            form(action=domain_url+base_url+"edit-answer-paper", method="POST")
                 input(type="hidden" name="Qname" value=aPaper.question_filename)
                 input(type="hidden" name="userid" value=aPaper.userid)
                 label(for="marks") Update Marks : 

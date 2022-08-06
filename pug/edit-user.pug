@@ -6,12 +6,12 @@ block page-head
     title User Details
 
 block page-header
-    a#back(href=base_url+"/users") Go Back
-    a#home(href=base_url+"/") Home
-    a#logout(href=base_url+"/logout") Log Out
+    a#back(href=base_url+"users") Go Back
+    a#home(href=base_url) Home
+    a#logout(href=base_url+"logout") Log Out
 
 mixin make_singleForm(id)
-    form(id=id action=domain_url+base_url+"/edit-user", method="POST") 
+    form(id=id action=domain_url+base_url+"edit-user", method="POST") 
         input(type="hidden" name="userid" value=user.userid)
 
         if id=="form-password"
@@ -116,6 +116,6 @@ block page-end
                 address: `#{userInfo.address}`
             };
     if user && userInfo
-        script(src=base_url+"/static/edit-user.js") 
+        script(src=base_url+"static/edit-user.js") 
 
         

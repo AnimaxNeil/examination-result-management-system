@@ -5,15 +5,14 @@ extends base.pug
 block page-head 
     title Add Question Paper 
 
-block page-header 
-    a#back(href=base_url+"/question-papers") Go Back
-    a#home(href=base_url+"/") Home
-    a#logout(href=base_url+"/logout") Log Out
+block page-header
+    a#home(href=base_url) Home
+    a#logout(href=base_url+"logout") Log Out
 
 block page-main 
     section#add-question-paper
         h1 Add Question Paper 
-        form(action=domain_url+base_url+"/add-question-paper" method="POST" enctype="multipart/form-data")
+        form(action=domain_url+base_url+"add-question-paper" method="POST" enctype="multipart/form-data")
             div 
                 label(for="Qname") Name : 
                 input#qname(type="text" name="Qname" pattern=rgx.Qname required="required")

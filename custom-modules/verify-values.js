@@ -1,6 +1,6 @@
 // checks if the value is as desired
 
-const rgx = require(global.__basedir + "/custom-modules/regex");
+const rgx = require(global.__basedir + "custom-modules/regex");
 
 const verify_values = {
     verify_userid: (userid) => {
@@ -20,7 +20,7 @@ const verify_values = {
         return type == "student" || type == "teacher";
     },
     verify_active: (active) => {
-        return active === "true" || active === "false";
+        return active === 1 || active === 0;
     },
     verify_name: (name) => {
         return name && rgx.name.test(name) == true;

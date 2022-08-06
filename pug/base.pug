@@ -1,9 +1,9 @@
 //- base page layout
 
 //- env variables [top one for local, bottom one for hosted]
-- const domain_url =""; const base_url = "";
+- const domain_url =""; const base_url = "/";
 //- - const domain_url = "https://www.animaxneil.com"
-//- - const base_url = "/hosted-projects/examination-result-management-system";
+//- - const base_url = "/hosted-projects/examination-result-management-system/";
 
 doctype html
 html(lang="en")
@@ -12,8 +12,8 @@ html(lang="en")
         meta(charset="utf8")
         meta(name="viewport" content="=device-width, initial-scale=1.0")
         meta(name="developer" content="AnimaxNeil")
-        link(rel="stylesheet" href=base_url+"/static/style.css")
-        link(rel="icon" type="image/png" href=base_url+"/static/favicon.png")
+        link(rel="stylesheet" href=base_url+"static/style.css")
+        link(rel="icon" type="image/png" href=base_url+"static/favicon.png")
         block page-head
 
     body
@@ -23,11 +23,11 @@ html(lang="en")
         if errorMsg 
             div#errorMsg
                 span #{errorMsg}
-                img(src=base_url+"/static/small-cross.png" alt="close message" width="20")
+                img(src=base_url+"static/small-cross.png" alt="close message" width="20")
         if successMsg 
             div#successMsg
                 span #{successMsg}
-                img(src=base_url+"/static/small-cross.png" alt="close message" width="20")
+                img(src=base_url+"static/small-cross.png" alt="close message" width="20")
 
         div#page-area
             header 
@@ -44,7 +44,9 @@ html(lang="en")
             script(type="text/javascript").
                 window.errorMsgRecieved=#{errorMsgRecieved};
                 window.successMsgRecieved=#{successMsgRecieved};
-            script(src=base_url+"/static/response-msg.js")
+            script(src=base_url+"static/response-msg.js")
+
+        div#copyright &#169; AnimaxNeil
 
         block page-end
 

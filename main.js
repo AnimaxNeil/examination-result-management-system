@@ -1,23 +1,22 @@
 // examination-result-management-system
 
 // initializing base variables
-global.__basedir = __dirname;
-global.errorMsg = global.successMsg = null;
 require("dotenv").config();
-
-// need for working with Phusion Passenger (shared hosting)
+global.__basedir = __dirname + "/";
+global.errorMsg = global.successMsg = null;
+// need for working with Phusion Passenger (shared hosting) or a sub directory website design
 global.__baseurl = process.env.BASE_URL;
 
-// for cresting an express application
+// for creating an express application
 const express = require("express");
 const app = express();
 
 // setting the templating engine as pug
 app.set("view engine", "pug");
-app.set("views", global.__basedir + "/pug");
+app.set("views", global.__basedir + "pug");
 
 // database connection, promise version for compatibility
-const db = require(global.__basedir + "/custom-modules/database-promise");
+const db = require(global.__basedir + "custom-modules/database-promise");
 // for maintaining session information like logged in user
 const session = require("express-session");
 const mysqlStore = require("express-mysql-session")(session);
@@ -29,7 +28,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
         httpOnly: true,
         sameSite: true,
         resave: false,
@@ -40,39 +39,35 @@ app.use(session({
 }));
 app.set("trust proxy", 1);
 
-// file handling
-const fs = require("fs");
-
 // log files handling
-const logger = require(global.__basedir + "/custom-modules/logger");
+const logger = require(global.__basedir + "custom-modules/logger");
+
+// custom redirect handler
+const redirecth = require(global.__basedir + "custom-modules/redirect-handler");
 
 // for serving static files like stylesheets, javascripts, images
-app.use(global.__baseurl + "/static", express.static(global.__basedir + "/static"));
+app.use(global.__baseurl + "static", express.static(global.__basedir + "static"));
 
 //to handle base page requests
-app.use(global.__baseurl + "/", require(global.__basedir + "/routes/home"));
+app.use(global.__baseurl, require(global.__basedir + "routes/home"));
 
 // to handle login page requests
-app.use(global.__baseurl + "/login", require(global.__basedir + "/routes/login"));
+app.use(global.__baseurl + "login", require(global.__basedir + "routes/login"));
 
 // to handle download requests
-app.use(global.__baseurl + "/download", require(global.__basedir + "/routes/download"));
+app.use(global.__baseurl + "download", require(global.__basedir + "routes/download"));
 
 // to handle manage files requests
-app.use(global.__baseurl + "/manage-files", require(global.__basedir + "/routes/manage-files"));
+app.use(global.__baseurl + "manage-files", require(global.__basedir + "routes/manage-files"));
 
 // simple test url
-app.get(global.__baseurl + "/ok", (req, res) => {
-    res.send("Website is working OK");
-});
-// simple post test url
-app.post(global.__baseurl + "/ok", (req, res) => {
+app.all(global.__baseurl + "ok", (req, res) => {
     res.send("Website is working OK");
 });
 
 // to redirect users when the page isnt available, can add a 404 here
-app.all(global.__baseurl + "/*", (req, res) => {
-    res.redirect(global.__baseurl + "/");
+app.all(global.__baseurl + "*", (req, res) => {
+    redirecth.invalid_url(req, res, null);
 });
 
 // start server

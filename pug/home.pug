@@ -6,28 +6,29 @@ block page-head
     title Home
 
 block page-header 
-    a#logout(href=base_url+"/logout") Log Out
+    a#logout(href=base_url+"logout") Log Out
 
 block page-main 
     section#user-home
         if userType=="admin"
             h1 Admin Home
             div
-                a(href=base_url+"/users") View Users
-                a(href=base_url+"/add-user") Add New User
-                a(href=base_url+"/manage-files") Manage Files
+                a(href=base_url+"users") View Users
+                a(href=base_url+"add-user") Add User
+                a(href=base_url+"manage-files") Manage Files
         else if userType=="student"
             h1 Student Home
             div 
-                a(href=base_url+"/exams") Ongoing Exams
-                a(href=base_url+"/results") Results
-                a(href=base_url+"/profile") Profile
+                a(href=base_url+"exams") Ongoing Exams
+                a(href=base_url+"results") Results
+                a(href=base_url+"profile") Profile
         else if userType=="teacher"
             h1 Teacher Home
             div 
-                a(href=base_url+"/question-papers") Question Papers
-                a(href=base_url+"/students") Students
-                a(href=base_url+"/profile") Profile
+                a(href=base_url+"students") Students
+                a(href=base_url+"question-papers") View Question Papers
+                a(href=base_url+"add-question-paper") Add Question Paper
+                a(href=base_url+"profile") Profile
         else 
             span Unknown user
 

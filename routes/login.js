@@ -4,73 +4,53 @@
 const express = require("express");
 const router = express.Router();
 
-// log files handling
-const logger = require(global.__basedir + "/custom-modules/logger");
+// custom redirect handler
+const redirecth = require(global.__basedir + "custom-modules/redirect-handler");
+// custom send handler
+const sendh = require(global.__basedir + "custom-modules/send-handler");
 
 // database connection
-const db = require(global.__basedir + "/custom-modules/database");
+const db = require(global.__basedir + "custom-modules/database");
 // formatted sql querries
-const sql = require(global.__basedir + "/custom-modules/sql-commands");
-
+const sql = require(global.__basedir + "custom-modules/sql-commands");
 // check validity of various input feilds
-const vfv = require(global.__basedir + "/custom-modules/verify-values");
+const vfv = require(global.__basedir + "custom-modules/verify-values");
 // valid regex for the front end
-let rgxub = require(global.__basedir + "/custom-modules/regex-unbounded");
+let rgxub = require(global.__basedir + "custom-modules/regex-unbounded");
 
 
 router.get("/", (req, res) => {
-    if (req.session.user) {
-        res.redirect(global.__baseurl + "/");
-        logger.quickLog(req, null, "permission denied");
-    }
-    else {
-        res.render("login", {
-            rgx: rgxub,
-            errorMsg: global.errorMsg,
-            successMsg: global.successMsg
+    if (req.session.user)
+        redirecth.login_duplicate(req, res, null);
+    else
+        sendh.page(req, res, "login", {
+            rgx: rgxub
         });
-        global.errorMsg = global.successMsg = null;
-        logger.quickLog(req, null, "sent");
-    }
 });
 
 const authenticate_user = (req, res) => {
     req.body.userid = vfv.get_real_userid(req.body.userid);
-    db.query(sql.get_users_with_id_password(req.body.userid, req.body.password), (err, users) => {
-        if (err) {
-            res.redirect(global.__baseurl + "/login");
-            logger.quickLog(req, err, null);
-        }
+    db.query(sql.select_users_with_id_password, [req.body.userid, req.body.password], (err, users) => {
+        if (err)
+            redirecth.system_error(req, res, err, "login");
         else if (users[0] && users[0].active != 0) {
             req.session.user = Object.assign({}, {
                 userid: users[0].userid,
                 type: users[0].type,
             });
-            global.successMsg = "Login successful.";
-            res.redirect(global.__baseurl + "/");
-            logger.quickLog(req, null, "login successful, userid:" + req.body.userid);
+            redirecth.login_success(req, res, null);
         }
-        else {
-            global.errorMsg = "Login failed. Incorrect credentials or the associated user account is inactive.";
-            res.redirect(global.__baseurl + "/login");
-            logger.quickLog(req, null, "login failed, userid:" + req.body.userid);
-        }
+        else redirecth.login_fail(req, res, "login");
     });
 };
 
 router.post("/", (req, res) => {
-    if (req.session.user) {
-        res.redirect(global.__baseurl + "/");
-        logger.quickLog(req, null, "already logged in, userid:" + req.session.user.userid);
-    }
-    else if (req.body.userid && req.body.password && vfv.verify_userid(req.body.userid)) {
+    if (req.session.user)
+        redirecth.login_duplicate(req, res, null);
+    else if (req.body.userid && req.body.password && vfv.verify_userid(req.body.userid))
         authenticate_user(req, res);
-    }
-    else {
-        res.redirect(global.__baseurl + "/login");
-        logger.quickLog(req, null, "invalid input");
-    }
+    else
+        redirecth.invalid_input(req, res, null);
 });
 
 module.exports = router;
-

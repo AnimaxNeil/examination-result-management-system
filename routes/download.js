@@ -4,56 +4,42 @@
 const express = require("express");
 const router = express.Router();
 
-// log files handling
-const logger = require(global.__basedir + "/custom-modules/logger");
+// custom redirect handler
+const redirecth = require(global.__basedir + "custom-modules/redirect-handler");
+// custom send handler
+const sendh = require(global.__basedir + "custom-modules/send-handler");
 
 // database connection
-const db = require(global.__basedir + "/custom-modules/database");
+const db = require(global.__basedir + "custom-modules/database");
 // formatted sql querries
-const sql = require(global.__basedir + "/custom-modules/sql-commands");
-
+const sql = require(global.__basedir + "custom-modules/sql-commands");
 // check validity of various input feilds
-const vfv = require(global.__basedir + "/custom-modules/verify-values");
+const vfv = require(global.__basedir + "custom-modules/verify-values");
 
 
 router.get("/question-paper/:Qname", (req, res) => {
     if (req.session.user && vfv.verify_Qname(req.params.Qname)) {
         req.params.Qname = req.params.Qname.toLowerCase();
-        db.query(sql.get_question_papers_with_name(req.params.Qname), (err, qPapers) => {
-            if (err) {
-                res.redirect(global.__baseurl + "/");
-                logger.quickLog(req, err, null);
-            }
-            else if (qPapers[0]) {
-                res.download(global.__basedir + "/data/question-papers/" + req.params.Qname + ".pdf");
-                logger.quickLog(req, null, "sent");
-            }
-            else {
-                res.redirect(global.__baseurl + "/");
-                logger.quickLog(req, null, "not found");
-            }
+        db.query(sql.select_question_papers_with_name, [req.params.Qname], (err, qPapers) => {
+            if (err)
+                redirecth.system_error(req, res, err, null);
+            else if (qPapers[0])
+                sendh.question_paper(req, res, req.params.Qname);
+            else
+                redirecth.not_found(req, res, null);
         });
     }
-    else {
-        res.redirect(global.__baseurl + "/");
-        logger.quickLog(req, null, "permission denied");
-    }
+    else redirecth.permission_denied(req, res, null);
 });
 
 const download_answer_paper = (req, res, Qname, userid, Aname) => {
-    db.query(sql.get_answer_papers_with_Qname_id(Qname, userid), (err, aPapers) => {
-        if (err) {
-            res.redirect(global.__baseurl + "/");
-            logger.quickLog(req, err, null);
-        }
-        else if (aPapers[0]) {
-            res.download(global.__basedir + "/data/answer-papers/" + Aname + ".pdf");
-            logger.quickLog(req, null, "downloaded");
-        }
-        else {
-            res.redirect(global.__baseurl + "/");
-            logger.quickLog(req, null, "not found");
-        }
+    db.query(sql.select_answer_papers_with_Qname_id, [Qname, userid], (err, aPapers) => {
+        if (err)
+            redirecth.system_error(req, res, err, null);
+        else if (aPapers[0])
+            sendh.answer_paper(req, res, Aname);
+        else
+            redirecth.not_found(req, res, null);
     });
 }
 
@@ -65,27 +51,16 @@ router.get("/answer-paper/:Aname", (req, res) => {
         if (vfv.verify_Qname(Qname) && vfv.verify_userid(userid)) {
             userid = vfv.get_real_userid(userid);
             Aname = Qname + "-ANS-" + userid;
-            if (req.session.user.type == "admin" || req.session.user.type == "teacher") {
+            if (req.session.user.type == "admin" || req.session.user.type == "teacher")
                 download_answer_paper(req, res, Qname, userid, Aname);
-            }
-            else if (req.session.user.type == "student" && req.session.user.userid == userid) {
+            else if (req.session.user.type == "student" && req.session.user.userid == userid)
                 download_answer_paper(req, res, Qname, userid, Aname);
-            }
-            else {
-                res.redirect(global.__baseurl + "/");
-                logger.quickLog(req, null, "permission denied");
-            }
+            else
+                redirecth.permission_denied(req, res, null);
         }
-        else {
-            res.redirect(global.__baseurl + "/");
-            logger.quickLog(req, null, "invalid input");
-        }
+        else redirecth.invalid_input(req, res, null);
     }
-    else {
-        res.redirect(global.__baseurl + "/");
-        logger.quickLog(req, null, "permission denied");
-    }
+    else redirecth.permission_denied(req, res, null);
 });
 
 module.exports = router;
-

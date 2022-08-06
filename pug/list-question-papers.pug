@@ -6,8 +6,8 @@ block page-head
     title Question Papers
 
 block page-header 
-    a#home(href=base_url+"/") Home
-    a#logout(href=base_url+"/logout") Log Out
+    a#home(href=base_url) Home
+    a#logout(href=base_url+"logout") Log Out
 
 block page-main 
     if qPapers
@@ -31,7 +31,7 @@ block page-main
                             td #{qPaper.course} 
                             td #{qPaper.modified_date} 
                             td Yes
-                            td: a(href=base_url+"/question-paper/"+qPaper.filename) View
+                            td: a(href=base_url+"question-paper/"+qPaper.filename) View
         hr
         section#list-inactive-question-papers
             h1 Inactive Question Papers 
@@ -53,8 +53,4 @@ block page-main
                             td #{qPaper.course} 
                             td #{qPaper.modified_date} 
                             td No
-                            td: a(href=base_url+"/question-paper/"+qPaper.filename) View
-    hr
-    section#add-question-paper-option
-        h1 Add Question Paper?
-        a(href=base_url+"/add-question-paper") Add
+                            td: a(href=base_url+"question-paper/"+qPaper.filename) View

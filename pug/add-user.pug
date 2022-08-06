@@ -6,14 +6,14 @@ block page-head
     title Add new User
 
 block page-header 
-    a#home(href=base_url+"/") Home
-    a#logout(href=base_url+"/logout") Log Out
+    a#home(href=base_url) Home
+    a#logout(href=base_url+"logout") Log Out
 
 block page-main 
     section#add-user
         h1 User Id : &nbsp 
             span (will be assigned by system)
-        form(action=domain_url+base_url+"/add-user" method="POST")
+        form(action=domain_url+base_url+"add-user" method="POST")
             div 
                 label(for="password") Password : 
                 input#password(type="text" name="password" pattern=rgx.password required="required")

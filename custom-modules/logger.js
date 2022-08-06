@@ -13,10 +13,6 @@ const logger = {
     },
     getFormattedMessage: ({ user, get, post, info, error } = {}) => {
         let message = " |=user> ";
-        if (user) {
-            const v_userid = user.userid.toString();
-            if (v_userid.slice(0, 2) == "II") user.userid = (parseInt(v_userid.slice(2)) - 10000000);
-        }
         message += user ? user.userid + "(" + user.type + ")" : "(null)";
         if (get) message += " |=get> " + get.slice(global.__baseurl.length);
         if (post) message += " |=post> " + post.slice(global.__baseurl.length);
@@ -34,9 +30,13 @@ const logger = {
         if (!req)
             logger.writeToFile(level, logger.getFormattedMessage({ info: info, error: err }));
         else if (req.method == "GET")
-            logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, get: req.originalUrl, info: info, error: err }));
+            if (req.session && req.session.user)
+                logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, get: req.originalUrl, info: info, error: err }));
+            else logger.writeToFile(level, logger.getFormattedMessage({ get: req.originalUrl, info: info, error: err }));
         else if (req.method == "POST")
-            logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, post: req.originalUrl, info: info, error: err }));
+            if (req.session && req.session.user)
+                logger.writeToFile(level, logger.getFormattedMessage({ user: req.session.user, post: req.originalUrl, info: info, error: err }));
+            else logger.writeToFile(level, logger.getFormattedMessage({ post: req.originalUrl, info: info, error: err }));
     }
 };
 
