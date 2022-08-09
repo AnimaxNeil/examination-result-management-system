@@ -113,7 +113,7 @@ input[type=text], input[type=password], input[type=email], input[type=number] {
     cursor: text;
 }
 
-input:disabled, select:disabled {
+input:disabled, select:disabled, textarea:disabled {
     cursor: not-allowed;
     user-select: none;
 }
@@ -302,6 +302,7 @@ input[type=submit][value="Log in"], #edit-question-paper form a, #edit-answer-pa
     resize: none;
     height: 100px;
     vertical-align: middle;
+    padding: 8px 10px;
 }
 
 #edit-user form input[type=button], #edit-user form input[type=submit], #delete-user input[type=submit],

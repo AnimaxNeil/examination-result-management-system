@@ -34,7 +34,7 @@ router.use(fileUpload({
 
 router.get("/", (req, res) => {
     if (req.session.user)
-        sendh.page(req, res, "home", {
+        sendh.page(req, res, "user-home", {
             userType: req.session.user.type
         });
     else redirecth.permission_denied(req, res, "login");
@@ -42,7 +42,7 @@ router.get("/", (req, res) => {
 
 router.get("/forgot", (req, res) => {
     if (!req.session.user)
-        sendh.page(req, res, "forgot", null);
+        sendh.page(req, res, "forgot-login", null);
     else
         redirecth.permission_denied(req, res, null);
 });
@@ -60,7 +60,7 @@ router.get("/profile", (req, res) => {
             if (err)
                 redirecth.system_error(req, res, err, null);
             else
-                sendh.page(req, res, "profile", {
+                sendh.page(req, res, "user-profile", {
                     student: students[0]
                 });
         });
@@ -70,7 +70,7 @@ router.get("/profile", (req, res) => {
             if (err)
                 redirecth.system_error(req, res, err, null);
             else
-                sendh.page(req, res, "profile", {
+                sendh.page(req, res, "user-profile", {
                     teacher: teachers[0]
                 });
         });

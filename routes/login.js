@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     if (req.session.user)
         redirecth.login_duplicate(req, res, null);
     else
-        sendh.page(req, res, "login", {
+        sendh.page(req, res, "user-login", {
             rgx: rgxub
         });
 });
