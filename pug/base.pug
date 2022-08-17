@@ -38,6 +38,8 @@ html(lang="en")
             main
                 block page-main 
 
+        div#copyright &#169; AnimaxNeil
+        
         if errorMsg || successMsg 
             - const errorMsgRecieved=errorMsg?true:false;
             - const successMsgRecieved=successMsg?true:false;
@@ -45,8 +47,6 @@ html(lang="en")
                 window.errorMsgRecieved=#{errorMsgRecieved};
                 window.successMsgRecieved=#{successMsgRecieved};
             script(src=base_url+"static/response-msg.js")
-
-        div#copyright &#169; AnimaxNeil
 
         block page-end
 

@@ -10,6 +10,9 @@ const redirect_handler = {
         if (link) res.redirect(global.__baseurl + link); else res.redirect(global.__baseurl);
         logger.quickLog(req, err, info);
     },
+	no_msg: (req, res, link) => {
+        redirect_handler.in_site(req, res, null, null, 0, null, link);
+    },
     with_success: (req, res, info, msg, link) => {
         redirect_handler.in_site(req, res, null, info, 1, msg, link);
     },
