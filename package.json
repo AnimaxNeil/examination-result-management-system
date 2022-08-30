@@ -4,7 +4,7 @@
   "description": "An examination and result management system for educational institutions.",
   "main": "main.js",
   "author": "Animesh Sarkar",
-  "license": "none",
+  "license": "",
   "email": "animaxneil@gmail.com",
   "scripts": {
     "start": "node main.js"
