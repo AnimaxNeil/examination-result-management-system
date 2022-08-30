@@ -5,12 +5,13 @@ const logger = require(global.__basedir + "custom-modules/logger");
 const send_handler = {
     page: (req, res, fileName, params) => {
         if (params) {
-            params.errorMsg = global.errorMsg;
-            params.successMsg = global.successMsg;
+            if (req.session && req.session.responseMsg) {
+                params.responseMsg = req.session.responseMsg;
+                req.session.responseMsg = null;
+            }
             res.render(fileName, params);
         }
         else res.render(fileName);
-        global.errorMsg = global.successMsg = null;
         logger.quickLog(req, null, "page sent");
     },
     file: (req, res, file) => {

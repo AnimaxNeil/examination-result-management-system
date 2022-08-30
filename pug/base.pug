@@ -20,13 +20,9 @@ html(lang="en")
         //- body functions
         - const get_valid_userid = (userid) => { return "II" + (userid + 10000000); }
 
-        if errorMsg 
-            div#errorMsg
-                span #{errorMsg}
-                img(src=base_url+"static/small-cross.png" alt="close message" width="20")
-        if successMsg 
-            div#successMsg
-                span #{successMsg}
+        if responseMsg 
+            div#response-alert(class="alert-"+responseMsg.type)
+                span #{responseMsg.text}
                 img(src=base_url+"static/small-cross.png" alt="close message" width="20")
 
         div#page-area
@@ -40,13 +36,10 @@ html(lang="en")
 
         div#copyright &#169; AnimaxNeil
         
-        if errorMsg || successMsg 
-            - const errorMsgRecieved=errorMsg?true:false;
-            - const successMsgRecieved=successMsg?true:false;
-            script(type="text/javascript").
-                window.errorMsgRecieved=#{errorMsgRecieved};
-                window.successMsgRecieved=#{successMsgRecieved};
-            script(src=base_url+"static/response-msg.js")
+        - const responseMsgRecieved=responseMsg?true:false;
+        script(type="text/javascript").
+            window.responseMsgRecieved=#{responseMsgRecieved};
+        script(src=base_url+"static/response-msg.js")
 
         block page-end
 

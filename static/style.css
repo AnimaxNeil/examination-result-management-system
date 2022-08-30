@@ -73,7 +73,7 @@ main {
     margin: 60px 5% 80px 5%;
 }
 
-#errorMsg, #successMsg {
+#response-alert {
     padding: 10px;
     max-width: 1060px;
     margin: 10px auto;
@@ -83,29 +83,29 @@ main {
     clear: both;
 }
 
-#errorMsg {
+#response-alert img {
+    vertical-align: middle;
+    width: 15px;
+    float: right;
+}
+
+.alert-error {
     background-color: #ffcccc;
     border-color: #660000;
     color: #660000;
 }
 
-#successMsg {
+.alert-success {
     background-color: #ccccff;
     border-color: #000066;
     color: #000066;
-}
-
-#errorMsg img, #successMsg img {
-    vertical-align: middle;
-    width: 15px;
-    float: right;
 }
 
 hr {
     color: #006600;
 }
 
-input, select, #errorMsg img, #successMsg img {
+input, select, #response-alert img {
     cursor: pointer;
 }
 

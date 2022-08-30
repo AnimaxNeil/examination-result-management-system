@@ -3,7 +3,6 @@
 // initializing base variables
 require("dotenv").config();
 global.__basedir = __dirname + "/";
-global.errorMsg = global.successMsg = null;
 // need for working with Phusion Passenger (shared hosting) or a sub directory website design
 global.__baseurl = process.env.BASE_URL;
 
@@ -33,11 +32,11 @@ app.use(session({
         sameSite: true,
         resave: false,
         proxy: true,
-        secureProxy: process.env.NODE_ENV == "production",
         secure: process.env.NODE_ENV == "production",
+        secureProxy: process.env.NODE_ENV == "production",
     },
 }));
-app.set("trust proxy", 1);
+if (process.env.NODE_ENV == "production") app.set("trust proxy", 1);
 
 // log files handling
 const logger = require(global.__basedir + "custom-modules/logger");

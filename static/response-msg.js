@@ -2,23 +2,17 @@
 
 let responseMsg;
 
-if (window.errorMsgRecieved) {
+if (window.responseMsgRecieved) {
     responseMsg = {
-        message: document.getElementById("errorMsg"),
-        closeBtn: document.getElementById("errorMsg").getElementsByTagName("img")[0],
-    };
-}
-else if (window.successMsgRecieved) {
-    responseMsg = {
-        message: document.getElementById("successMsg"),
-        closeBtn: document.getElementById("successMsg").getElementsByTagName("img")[0],
+        message: document.getElementById("response-alert"),
+        closeBtn: document.getElementById("response-alert").getElementsByTagName("img")[0],
     };
 }
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // console.debug("DOM start");
-    if (window.errorMsgRecieved || window.successMsgRecieved) {
+    if (window.responseMsgRecieved) {
         responseMsg.closeBtn.addEventListener("click", function () { responseMsg.message.style.display = "none"; });
         setTimeout(function () { responseMsg.message.style.display = "none"; }, 4000);
     }
