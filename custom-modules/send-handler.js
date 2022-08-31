@@ -1,13 +1,13 @@
 // custom render handler object
 
-const logger = require(global.__basedir + "custom-modules/logger");
+const logger = require(global.base_dir + "custom-modules/logger");
 
 const send_handler = {
     page: (req, res, fileName, params) => {
         if (params) {
             if (req.session && req.session.responseMsg) {
                 params.responseMsg = req.session.responseMsg;
-                req.session.responseMsg = null;
+                delete req.session.responseMsg;
             }
             res.render(fileName, params);
         }
@@ -15,7 +15,7 @@ const send_handler = {
         logger.quickLog(req, null, "page sent");
     },
     file: (req, res, file) => {
-        res.download(global.__basedir + file);
+        res.download(global.base_dir + file);
         logger.quickLog(req, null, "file sent, " + file);
     },
     question_paper: (req, res, fileName) => {

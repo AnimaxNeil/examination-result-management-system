@@ -1,0 +1,13 @@
+//- server error, database connection fail page
+
+extends base.pug
+
+block page-head 
+    title Error 
+
+block page-header 
+    a#home(href=base_url) Reload
+
+block page-main 
+    p Server unreachable at the moment. Try again later.
+

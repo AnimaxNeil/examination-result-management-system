@@ -1,9 +1,9 @@
 // files deletion handler object
 
 const fs = require("fs");
-const db = require(global.__basedir + "custom-modules/database");
-const sql = require(global.__basedir + "custom-modules/sql-commands");
-const logger = require(global.__basedir + "custom-modules/logger");
+const db = require(global.base_dir + "custom-modules/database");
+const sql = require(global.base_dir + "custom-modules/sql-commands");
+const logger = require(global.base_dir + "custom-modules/logger");
 
 const file_handler = {
     delete_file: (file) => {
@@ -16,7 +16,7 @@ const file_handler = {
         db.query(sql.delete_question_papers_with_name, [Qname], (err, qRes) => {
             if (err) logger.quickLog(null, err, null);
             else {
-                const file = global.__basedir + "data/question-papers/" + Qname + ".pdf";
+                const file = global.base_dir + "data/question-papers/" + Qname + ".pdf";
                 file_handler.delete_file(file);
             }
         });
@@ -25,7 +25,7 @@ const file_handler = {
         db.query(sql.delete_answer_papers_with_Qname_id, [Qname, userid], (err, aRes) => {
             if (err) logger.quickLog(null, err, null);
             else {
-                const file = global.__basedir + "data/answer-papers/" + Qname + "-ANS-" + userid + ".pdf";
+                const file = global.base_dir + "data/answer-papers/" + Qname + "-ANS-" + userid + ".pdf";
                 file_handler.delete_file(file);
             }
         });

@@ -1,12 +1,12 @@
 // custom redirect handler object
 
-const logger = require(global.__basedir + "custom-modules/logger");
-const vfv = require(global.__basedir + "custom-modules/verify-values");
+const logger = require(global.base_dir + "custom-modules/logger");
+const vfv = require(global.base_dir + "custom-modules/verify-values");
 
 const redirect_handler = {
     in_site: (req, res, err, info, msgType, msg, link) => {
         if (msgType && msg && req.session) req.session.responseMsg = { type: msgType, text: msg };
-        if (link) res.redirect(global.__baseurl + link); else res.redirect(global.__baseurl);
+        if (link) res.redirect(global.base_url + link); else res.redirect(global.base_url);
         logger.quickLog(req, err, info);
     },
     no_msg: (req, res, link) => {

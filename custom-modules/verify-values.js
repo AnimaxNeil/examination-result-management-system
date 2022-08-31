@@ -1,6 +1,6 @@
 // checks if the value is as desired
 
-const rgx = require(global.__basedir + "custom-modules/regex");
+const rgx = require(global.base_dir + "custom-modules/regex");
 
 const verify_values = {
     verify_userid: (userid) => {

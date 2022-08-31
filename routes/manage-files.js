@@ -5,18 +5,18 @@ const express = require("express");
 const router = express.Router();
 
 // custom redirect handler
-const redirecth = require(global.__basedir + "custom-modules/redirect-handler");
+const redirecth = require(global.base_dir + "custom-modules/redirect-handler");
 // custom send handler
-const sendh = require(global.__basedir + "custom-modules/send-handler");
+const sendh = require(global.base_dir + "custom-modules/send-handler");
 // custom file handler
-const fileh = require(global.__basedir + "custom-modules/file-handler")
+const fileh = require(global.base_dir + "custom-modules/file-handler")
 
 // database connection
-const db = require(global.__basedir + "custom-modules/database");
+const db = require(global.base_dir + "custom-modules/database");
 // formatted sql querries
-const sql = require(global.__basedir + "custom-modules/sql-commands");
+const sql = require(global.base_dir + "custom-modules/sql-commands");
 // check validity of various input feilds
-const vfv = require(global.__basedir + "custom-modules/verify-values");
+const vfv = require(global.base_dir + "custom-modules/verify-values");
 
 
 router.get("/", (req, res) => {

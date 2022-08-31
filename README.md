@@ -1,6 +1,6 @@
 # Examination Result Management System  
 
-*version* : **1.0.5**  
+*version* : **1.0.7**  
 *update date* : 31 August 2022  
 *release date* : 22 June 2022  
 *developer* : **AnimaxNeil**  

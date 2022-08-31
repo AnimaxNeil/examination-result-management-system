@@ -5,20 +5,20 @@ const express = require("express");
 const router = express.Router();
 
 // custom redirect handler
-const redirecth = require(global.__basedir + "custom-modules/redirect-handler");
+const redirecth = require(global.base_dir + "custom-modules/redirect-handler");
 // custom send handler
-const sendh = require(global.__basedir + "custom-modules/send-handler");
+const sendh = require(global.base_dir + "custom-modules/send-handler");
 // custom files handler
-const fileh = require(global.__basedir + "custom-modules/file-handler")
+const fileh = require(global.base_dir + "custom-modules/file-handler")
 
 // database connection
-const db = require(global.__basedir + "custom-modules/database");
+const db = require(global.base_dir + "custom-modules/database");
 // formatted sql querries
-const sql = require(global.__basedir + "custom-modules/sql-commands");
+const sql = require(global.base_dir + "custom-modules/sql-commands");
 // check validity of various input feilds
-const vfv = require(global.__basedir + "custom-modules/verify-values");
+const vfv = require(global.base_dir + "custom-modules/verify-values");
 // valid regex for the front end
-let rgxub = require(global.__basedir + "custom-modules/regex-unbounded");
+let rgxub = require(global.base_dir + "custom-modules/regex-unbounded");
 
 // url attributes from forms
 router.use(express.json());
@@ -28,7 +28,7 @@ router.use(express.urlencoded({ extended: false }));
 const fileUpload = require('express-fileupload');
 router.use(fileUpload({
     useTempFiles: true,
-    tempFileDir: global.__basedir + "data/temp"
+    tempFileDir: global.base_dir + "data/temp"
 }));
 
 
@@ -38,6 +38,10 @@ router.get("/", (req, res) => {
             userType: req.session.user.type
         });
     else redirecth.permission_denied(req, res, "login");
+});
+
+router.get("/home", (req, res) => {
+    redirecth.no_msg(req, res, null);
 });
 
 router.get("/forgot", (req, res) => {
@@ -569,7 +573,7 @@ router.post("/add-question-paper", (req, res) => {
                                 if (err)
                                     redirecth.system_error(req, res, err, "add-question-paper");
                                 else {
-                                    req.files.Qfile.mv(global.__basedir + "data/question-papers/" + req.body.Qname + ".pdf", (err) => {
+                                    req.files.Qfile.mv(global.base_dir + "data/question-papers/" + req.body.Qname + ".pdf", (err) => {
                                         if (err)
                                             redirecth.system_error(req, res, err, "add-question-paper");
                                         else
@@ -758,7 +762,7 @@ router.post("/submit-exam", (req, res) => {
                                 if (err)
                                     redirecth.system_error(req, res, err, "exams");
                                 else {
-                                    req.files.Afile.mv(global.__basedir + "data/answer-papers/" + req.body.Qname + "-ANS-" + req.session.user.userid + ".pdf", (err) => {
+                                    req.files.Afile.mv(global.base_dir + "data/answer-papers/" + req.body.Qname + "-ANS-" + req.session.user.userid + ".pdf", (err) => {
                                         if (err)
                                             redirecth.system_error(req, res, err, "exams");
                                         else
