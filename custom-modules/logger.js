@@ -23,7 +23,7 @@ const logger = {
     },
     writeToFile: (level, message) => {
         message = "[" + logger.getCurrentTime() + "]" + "(" + level + ")+" + message;
-        fs.writeFile(global.base_dir + "/debug/log/log-" + logger.getCurrentDate() + ".txt", message, { flag: "a+" }, err => { });
+        fs.writeFile(global.base_dir + "debug/log/log-" + logger.getCurrentDate() + ".txt", message, { flag: "a+" }, err => { });
     },
     quickLog: (req, err, info) => {
         const level = err ? "error" : "info";

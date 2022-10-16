@@ -50,4 +50,4 @@ Every user has to undergo login authentication in order to access the primary fu
 
 ## Contact  
 *email* : animaxneil@gmail.com  
-*website* : https://www.animaxneil.com  
+*website* : https://www.animaxneil.com/contact  
