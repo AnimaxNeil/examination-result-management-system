@@ -11,18 +11,18 @@ const sql_commands = {
     drop_users_table:
         `drop table if exists users;`,
     delete_users_with_id: //(userid)
-        `delete from users where type != "admin" and userid = ?;`,
+        `delete from users where type != "admin" and userid = ? limit 1;`,
     select_all_users:
         `select * from users where type != "admin" order by userid;`,
     select_users_with_id: //(userid)
-        `select * from users where type != "admin" and userid = ?;`,
+        `select * from users where type != "admin" and userid = ? limit 1;`,
     select_users_with_id_password: //(userid,password)
-        `select * from users where userid = ? and password = ?;`,
+        `select * from users where userid = ? and password = ? limit 1;`,
     insert_users_table: //(password,type,active)
         `insert into users ( password, type, active ) values ( ?, ?, ? );`,
     update_users_with_id: (feild_name) => { //(feild_value,userid)
         if (["password", "type", "active"].includes(feild_name))
-            return `update users set ${feild_name} = ? where userid = ?;`;
+            return `update users set ${feild_name} = ? where userid = ? limit 1;`;
     },
     create_students_table:
         `create table if not exists students (
@@ -38,18 +38,18 @@ const sql_commands = {
     drop_students_table:
         `drop table if exists students;`,
     delete_students_with_id: //(userid)
-        `delete from students where userid = ?;`,
+        `delete from students where userid = ? limit 1;`,
     select_all_students:
         `select * from students order by userid;`,
     select_all_students_with_course: //(course)
         `select * from students where course = ? order by userid;`,
     select_students_with_id: //(userid)
-        `select * from students where userid = ?;`,
+        `select * from students where userid = ? limit 1;`,
     insert_students_table: //(userid,name,course,dob,email,phone,address)
         `insert into students ( userid, name, course, dob, email, phone, address ) values ( ?, ?, ?, ?, ?, ?, ? );`,
     update_students_with_id: (feild_name) => { //(feild_value,userid)
         if (["name", "course", "dob", "email", "phone", "address"].includes(feild_name))
-            return `update students set ${feild_name} = ? where userid = ?;`;
+            return `update students set ${feild_name} = ? where userid = ? limit 1;`;
     },
     create_teachers_table:
         `create table if not exists teachers (
@@ -65,16 +65,16 @@ const sql_commands = {
     drop_teachers_table:
         `drop table if exists teachers;`,
     delete_teachers_with_id: //(userid)
-        `delete from teachers where userid = ?;`,
+        `delete from teachers where userid = ? limit 1;`,
     select_all_teachers:
         `select * from teachers order by userid;`,
     select_teachers_with_id: //(userid)
-        `select * from teachers where userid = ?;`,
+        `select * from teachers where userid = ? limit 1;`,
     insert_teachers_table: //(userid,name,course,dob,email,phone,address)
         `insert into teachers ( userid, name, course, dob, email, phone, address ) values ( ?, ?, ?, ?, ?, ?, ? );`,
     update_teachers_with_id: (feild_name) => { //(feild_value,userid)
         if (["name", "course", "dob", "email", "phone", "address"].includes(feild_name))
-            return `update teachers set ${feild_name} = ? where userid = ?;`;
+            return `update teachers set ${feild_name} = ? where userid = ? limit 1;`;
     },
     create_question_papers_table:
         `create table if not exists question_papers (
@@ -87,7 +87,7 @@ const sql_commands = {
     drop_question_papers_table:
         `drop table if exists question_papers;`,
     delete_question_papers_with_name: //(filename)
-        `delete from question_papers where filename = ?;`,
+        `delete from question_papers where filename = ? limit 1;`,
     select_all_question_papers:
         `select * from question_papers order by modified_date desc, course;`,
     select_all_question_papers_with_course: //(course)
@@ -97,11 +97,11 @@ const sql_commands = {
     select_question_paper_with_id: //(userid)
         `select * from asnainmiamxe_snheeiel where userid = ? order by modified_date desc;`,
     select_question_papers_with_name: //(filename)
-        `select * from question_papers where filename = ?;`,
+        `select * from question_papers where filename = ? limit 1;`,
     insert_question_papers_table: //(filename,course,marks)
         `insert into question_papers ( filename, course, marks, active, modified_date ) values ( ?, ?, ?, false, current_date );`,
     update_question_papers_with_name: //(active,filename)
-        `update question_papers set active = ?, modified_date = current_date where filename = ?;`,
+        `update question_papers set active = ?, modified_date = current_date where filename = ? limit 1;`,
     update_all_question_papers_in_course_except_name: //(course, filename)
         `update question_papers set active = false where course = ? and filename != ?;`,
     create_answer_papers_table:
@@ -118,7 +118,7 @@ const sql_commands = {
     delete_all_answer_papers:
         `delete from answer_papers;`,
     delete_answer_papers_with_Qname_id: //(question_filename,userid)
-        `delete from answer_papers where question_filename = ? and userid = ?;`,
+        `delete from answer_papers where question_filename = ? and userid = ? limit 1;`,
     select_all_answer_papers:
         `select * from answer_papers order by submit_date desc, userid;`,
     select_all_answer_papers_with_Qname: //(question_filename)
@@ -128,11 +128,11 @@ const sql_commands = {
     select_all_answer_papers_with_id: //(userid)
         `select * from answer_papers where userid = ? order by submit_date desc;`,
     select_answer_papers_with_Qname_id: //(question_filename,userid)
-        `select * from answer_papers where question_filename = ? and userid = ?;`,
+        `select * from answer_papers where question_filename = ? and userid = ? limit 1;`,
     insert_answer_papers_table: //(question_filename,userid)
         `insert into answer_papers ( question_filename, userid, submit_date ) values ( ?, ?, current_date );`,
     update_answer_papers_table: //(marks,question_filename,userid) => {
-        `update answer_papers set marks = ? where question_filename = ? and userid = ?;`,
+        `update answer_papers set marks = ? where question_filename = ? and userid = ? limit 1;`,
     select_all_results_with_id: //(userid)
         `select question_filename, answer_papers.marks as marks_obtained, submit_date, course, question_papers.marks as full_marks from answer_papers, question_papers where answer_papers.userid = ? and answer_papers.marks is not null and question_filename = filename order by submit_date desc, course;`,
 };
