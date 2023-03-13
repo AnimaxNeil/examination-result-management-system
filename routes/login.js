@@ -22,7 +22,8 @@ router.get("/", (req, res) => {
 
 const authenticate_user = (req, res) => {
     req.body.userid = vfv.get_real_userid(req.body.userid);
-    const qry = req.app.get("db").query(sql.select_users_with_id_password, [req.body.userid, req.body.password]);
+    const db = req.app.get("db");
+    const qry = db.query(sql.select_users_with_id_password, [req.body.userid, req.body.password]);
     qry.then(([users]) => {
         if (users.length > 0 && users[0] && users[0].active == true) {
             req.session.user = Object.assign({}, {

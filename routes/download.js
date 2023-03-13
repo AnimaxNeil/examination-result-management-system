@@ -15,7 +15,8 @@ const vfv = require(global.base_dir + "custom-modules/verify-values");
 router.get("/question-paper/:Qname", (req, res) => {
     if (req.session.user && vfv.verify_Qname(req.params.Qname)) {
         req.params.Qname = req.params.Qname.toLowerCase();
-        const qry = req.app.get("db").query(sql.select_question_papers_with_name, [req.params.Qname]);
+        const db = req.app.get("db");
+        const qry = db.query(sql.select_question_papers_with_name, [req.params.Qname]);
         qry.then(([qPapers]) => {
             if (qPapers.length > 0 && qPapers[0]) sendh.question_paper(req, res, req.params.Qname);
             else redirecth.not_found(req, res, null);
@@ -24,7 +25,7 @@ router.get("/question-paper/:Qname", (req, res) => {
 });
 
 const download_answer_paper_and_respond = (req, res, Qname, userid, Aname) => {
-    const qry = req.app.get("db").query(sql.select_answer_papers_with_Qname_id, [Qname, userid]);
+    const qry = db.query(sql.select_answer_papers_with_Qname_id, [Qname, userid]);
     qry.then(([aPapers]) => {
         if (aPapers.length > 0 && aPapers[0]) sendh.answer_paper(req, res, Aname);
         else redirecth.not_found(req, res, null);
