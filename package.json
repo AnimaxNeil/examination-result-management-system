@@ -1,6 +1,6 @@
 {
   "name": "examination-result-management-system",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "An examination and result management system for educational institutions.",
   "main": "main.js",
   "author": "Animesh Sarkar",
