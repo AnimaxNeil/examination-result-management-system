@@ -6,7 +6,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-// need for working with Phusion Passenger (shared hosting) or a sub directory website design
+// need for working with Phusion Passenger (shared hosting) or a sub level website
 global.domain_url = process.env.DOMAIN_URL;
 global.base_url = process.env.BASE_URL;
 global.base_dir = __dirname + "/";
@@ -26,6 +26,7 @@ const redirecth = require(global.base_dir + "custom-modules/redirect-handler");
 const sendh = require(global.base_dir + "custom-modules/send-handler");
 // database connection, promise version for compatibility
 const db = require(global.base_dir + "custom-modules/database-promise");
+app.set("db", db);
 
 // for maintaining session information like logged in user
 const session = require("express-session");
@@ -99,10 +100,9 @@ const sessionStore = new mysqlStore({}, db, (err) => {
         routes_on_session_success();
     }
     routes_after_session();
-    
+
     // start server
     app.listen(process.env.PORT, () => {
         logger.writeToFile("info", logger.getFormattedMessage({ info: "Website started" }));
     });
-
 });

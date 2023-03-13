@@ -78,22 +78,24 @@ mixin make_singleForm(id)
 
 
 block page-main 
-    if user && userInfo && rgx 
+    if user 
         - user.userid = get_valid_userid(user.userid)
         section#edit-user
             h1 User Id : &nbsp #{user.userid}
-            +make_singleForm("form-password")
-            +make_singleForm("form-type")
-            +make_singleForm("form-active")
-            +make_singleForm("form-name")
-            +make_singleForm("form-course")
-            +make_singleForm("form-dob")
-            +make_singleForm("form-email")
-            +make_singleForm("form-phone")
-            +make_singleForm("form-address")
+            if rgx
+                +make_singleForm("form-password")
+                +make_singleForm("form-type")
+                +make_singleForm("form-active") 
+                if userInfo
+                    +make_singleForm("form-name")
+                    +make_singleForm("form-course")
+                    +make_singleForm("form-dob")
+                    +make_singleForm("form-email")
+                    +make_singleForm("form-phone")
+                    +make_singleForm("form-address")
         hr
         section#delete-user
-            form#form-delete(action=domain_url+base_url+"/delete-user" method="POST") 
+            form#form-delete(action=domain_url+base_url+"delete-user" method="POST") 
                 h1 Delete this User ?
                 input(type="hidden" name="userid" value=user.userid)
                 input(type="submit" value="Delete")
