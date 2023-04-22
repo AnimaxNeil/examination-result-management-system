@@ -16,10 +16,6 @@ const vfv = require(global.base_dir + "custom-modules/verify-values");
 // valid regex for the front end
 let rgxub = require(global.base_dir + "custom-modules/regex-unbounded");
 
-// url attributes from forms
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
-
 // handle file upload from forms
 const fileUpload = require('express-fileupload');
 router.use(fileUpload({

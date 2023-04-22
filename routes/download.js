@@ -25,6 +25,7 @@ router.get("/question-paper/:Qname", (req, res) => {
 });
 
 const download_answer_paper_and_respond = (req, res, Qname, userid, Aname) => {
+    const db = req.app.get("db");
     const qry = db.query(sql.select_answer_papers_with_Qname_id, [Qname, userid]);
     qry.then(([aPapers]) => {
         if (aPapers.length > 0 && aPapers[0]) sendh.answer_paper(req, res, Aname);
