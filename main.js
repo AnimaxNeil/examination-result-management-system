@@ -19,8 +19,8 @@ app.set("view engine", "pug");
 app.set("views", global.base_dir + "pug");
 
 // url attributes from forms
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // log files handling
 const logger = require(global.base_dir + "custom-modules/logger");
