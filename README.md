@@ -145,13 +145,13 @@ The application has three kinds of users:
 
 * Live Demo
 
-    * https://run.animaxneil.com/examination-result-management-system
+    * <https://run.animaxneil.com/examination-result-management-system>
 
 ---
 
 ## Contact
 
-* Link: https://www.animaxneil.com/contact
-* Email: animaxneil@gmail.com
+* Link: <https://www.animaxneil.com/contact>
+* Email: <animaxneil@gmail.com>
 
 ---
